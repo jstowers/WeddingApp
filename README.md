@@ -25,5 +25,17 @@ A React-driven wedding app with MongoDB
         3.  rerun the webpack dev server
 
 
--- Hook up MongoDB to form compon
+-- Hook up MongoDB to RSVP Form
+
+    1.  Review Stephen Grider's MongoDB course 
+
+    2.  Install express and mocha as dependencies
+
+        ````
+            npm install --save express mocha
+
+    3.  Install mongodb Express driver
+        ````
+            npm install --save mongodb
+
 
