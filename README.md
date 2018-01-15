@@ -2,7 +2,7 @@
 An interactive, dynamic wedding app built with React, Node, Express, and MongoDB (MERN).
 
 ## Run the App on Your Local Machine
-1.  To start the frontend client server on port 8080, open a new tab in the console and from the WeddingApp root directory:
+1.  To start the frontend client server on port 8080, open a new tab in the console, move to the WeddingApp root directory, and run:
     ````
         $ npm run serve
     ````
@@ -12,7 +12,7 @@ An interactive, dynamic wedding app built with React, Node, Express, and MongoDB
         http://localhost:8080
     ````
 
-3.  To start the backend Node/Express server on port 3050, open a new tab in the console and from the WeddingApp root directory:
+3.  To start the backend Node/Express server on port 3050, open a new tab in the console, move to the WeddingApp root directory, and run:
     ````
         $ node app.js
     ````
@@ -32,7 +32,7 @@ mongod is the main background process (daemon) that handles data requests, manag
     ````
 If the mongod process is not running in the background, the Mocha tests attempting to connect to the Mongo database will fail.
 
-2.  To run the Mocha test suite, open a new tab in the console and from the WeddingApp directory, type:
+2.  To run the Mocha test suite, open a new tab in the console, move to the WeddingApp directory, and run the test script:
     ````
         $ npm run test
     ````
@@ -41,8 +41,9 @@ If the mongod process is not running in the background, the Mocha tests attempti
 
 ### Saturday, January 13, 2018
 
--- Build out initial React & Webpack template
--- Add RSVP form component using react-bootstrap
+- Build out initial React & Webpack template
+
+- Add RSVP form component using react-bootstrap
 
         I could not get the handleInputChange() function to properly set state when a new value was typed in the form field.  I was receiving the following error:
         Uncaught TypeError: Cannot read property 'setState' of undefined
@@ -63,7 +64,7 @@ If the mongod process is not running in the background, the Mocha tests attempti
         3.  rerun the webpack dev server
 
 
--- Hook up MongoDB to RSVP Form
+- Hook up MongoDB to RSVP Form
 
     1.  Review Stephen Grider's MongoDB course 
 
@@ -118,12 +119,12 @@ Express doesn't do a good job of handling the request body
 
 Will use small library to take in these chunks and make them accessible - body-parser
 
-# body-parser
+### body-parser
 1.  Parses the incoming request object, req
 2.  Places it on the req.body property
 
 
-# Testing Guest Creation  
+### Testing Guest Creation  
 Grider, MongoDB, Sec. 14, Lec. 111
 
 1.  Look at response object that comes back after request is completed.  Will assume the response includes the guest that was just created.
@@ -132,6 +133,12 @@ Grider, MongoDB, Sec. 14, Lec. 111
 
 3.  Take a count of guests in the Guest collection before post request is made, and then take another count when the request is finished and see if 1 more record is added.
 
+### Monday, January 14, 2018
+
+___Goals___
+
+- Complete Mocha tests for GET and POST requests
+- Connect React app to Express server
 
 
 
