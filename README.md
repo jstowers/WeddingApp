@@ -38,4 +38,49 @@ A React-driven wedding app with MongoDB
         ````
             npm install --save mongodb
 
+    4.  Compare between mongoose and mongodb Node drivers
 
+    5.  Build basic express server with simple get request
+
+    6.  Create test file to test GET requests and response.  Download library supertest to make testing of HTTP requests easier.
+
+    7.  Sec. 14, Lec. 104
+        Used supertest to test the GET request.
+        Add the following test script to the package.json:
+
+        "test": "nodemon --exec 'mocha --recursive -R min'",
+
+
+### Sunday, January 14, 2018
+
+-- Parts of Express App
+1.  Router -- looks at URL and method of incoming request and sends that request to the appropriate route handler.  Will separate routing logic from logic of how to respond to the request.
+
+2.  Controller -- logic of how to respond to a particular request
+
+3.  Model -- Mongoose model or model driver
+
+
+*** Mongo requires a directory to be pre-named to store data on the server.  
+
+        sudo mkdir -p /data/db
+
+
+*** Stopping the Mongo Driver
+
+        
+        $ brew services stop mongodb
+
+
+*** Node Receiving a POST Request
+Node receives tiny chunks of the request body at a time; piece by piece;
+Once Node receives the entire request
+
+Express doesn't do a good job of handling the request body
+
+Will use small library to take in these chunks and make them accessible - body-parser
+
+# body-parser
+1.  Parses the incoming request object, req
+2.  Places it on the req.body property
+2.  
