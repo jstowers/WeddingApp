@@ -1,5 +1,43 @@
 # WeddingApp
-A React-driven wedding app with MongoDB
+An interactive, dynamic wedding app built with React, Node, Express, and MongoDB (MERN).
+
+## Run the App on Your Local Machine
+1.  To start the frontend client server on port 8080, open a new tab in the console and from the WeddingApp root directory:
+    ````
+        $ npm run serve
+    ````
+
+2.  Open a browser window and navigate to:
+    ````
+        http://localhost:8080
+    ````
+
+3.  To start the backend Node/Express server on port 3050, open a new tab in the console and from the WeddingApp root directory:
+    ````
+        $ node app.js
+    ````
+
+4.  To start the mongod process on your local machine, open a new tab in the console and run the following command:
+````
+        $ mongod
+````
+
+mongod is the main background process (daemon) that handles data requests, manages data access, and performs background management operations for the Mongo database.
+
+## Run the Backend Mocha Tests on Your Local Machine
+
+1.  To start the mongod process, open a new tab in the console and type:
+    ````
+        $ mongod
+    ````
+If the mongod process is not running in the background, the Mocha tests attempting to connect to the Mongo database will fail.
+
+2.  To run the Mocha test suite, open a new tab in the console and from the WeddingApp directory, type:
+    ````
+        $ npm run test
+    ````
+
+---
 
 ### Saturday, January 13, 2018
 
@@ -86,12 +124,14 @@ Will use small library to take in these chunks and make them accessible - body-p
 
 
 # Testing Guest Creation  
-Grider, Sec. 14, Lec. 111
+Grider, MongoDB, Sec. 14, Lec. 111
 
 1.  Look at response object that comes back after request is completed.  Will assume the response includes the guest that was just created.
 
 2.  More classic - add an insertion, look in Guests collection and make sure that a Guest with the given name and email is in that collection
 
 3.  Take a count of guests in the Guest collection before post request is made, and then take another count when the request is finished and see if 1 more record is added.
+
+
 
 

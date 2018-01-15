@@ -11,7 +11,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 // url to connect to guests database
-const url = 'mongodb://localhost:27017/guests';
+const url = 'mongodb://localhost:27017';
 
 
 // each key-value pair represents a request handler
@@ -38,6 +38,7 @@ module.exports = {
 				assert.equal(null, err);
 				resultArr.push(doc);
 			}, () => {
+				res.status(200).send(resultArr);
 				db.close();
 				// res.render sends data back to the index page 
 				// to render to an object called items
@@ -66,6 +67,7 @@ module.exports = {
 			weddingDB.collection('guests').insertOne(item, (err, result) => {
 				assert.equal(null, err);
 				console.log('a new guest was added to the guests collection.');
+				res.status(200).send('success');
 				db.close();
 			});
 		});

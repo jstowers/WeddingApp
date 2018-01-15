@@ -3,44 +3,44 @@ const request = require('supertest');
 const app = require('../../app');
 
 
+/* 
+	Arrow Functions with Mocha Discouraged!
+
+	Arrow functions () => { } lexically bind 'this' and cannot
+	access the Mocha context.
+
+	I.e., the first test fails (with the use of 'this') when 
+	the describe function is changed to an arrow function.
+*/
+
 describe('Guests controller', function() {
 
-	it('should take less than 2000ms', function(done){
+	it('should take less than 2000ms', (done) => {
 		this.timeout(2000);
   		setTimeout(done, 1000);
 	});
 
-	it('POST to /api/guests creates a new guest', function (done) {
+	it('POST to /api/guests creates a new guest', (done) => {
 		request(app)
 			.post('/api/guests')
 			.send({
-				name: 'Joseph Stowers',
-				email: 'test3@msn.com'
+				name: 'Joyce Stowers',
+				email: 'test@test.com'
 			})
-			//.expect({success:true}, done)
-			.end(function (err, res) {
-				console.log('INSIDE POST .end');
+			.expect(200)
+			.end((err, res) => {
+				if (err) return done(err);
 				done();
 			});
 	});
 
-	it('GET to /api/guests returns all the guests', function (done) {
+	it('GET to /api/guests returns all the guests', (done) => {
 		request(app)
 			.get('/api/guests')
-			.expect({success:true})
-			.then(function() {
-				done()
-			})
-			.catch(function(err) {
-				done.faile(err);
-			})
-
-
-			/*
+			.expect(200)
 			.end((err, res) => {
-				console.log('INSIDE GET .end');
-				done()
+				if (err) return done(err);
+				done();
 			});
-			*/
 	});
 });
