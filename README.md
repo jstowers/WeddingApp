@@ -83,4 +83,15 @@ Will use small library to take in these chunks and make them accessible - body-p
 # body-parser
 1.  Parses the incoming request object, req
 2.  Places it on the req.body property
-2.  
+
+
+# Testing Guest Creation  
+Grider, Sec. 14, Lec. 111
+
+1.  Look at response object that comes back after request is completed.  Will assume the response includes the guest that was just created.
+
+2.  More classic - add an insertion, look in Guests collection and make sure that a Guest with the given name and email is in that collection
+
+3.  Take a count of guests in the Guest collection before post request is made, and then take another count when the request is finished and see if 1 more record is added.
+
+
