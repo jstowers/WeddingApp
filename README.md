@@ -24,6 +24,23 @@ An interactive, dynamic wedding app built with React, Node, Express, and MongoDB
 
 mongod is the main background process (daemon) that handles data requests, manages data access, and performs background management operations for the Mongo database.
 
+If mongod errors and says the socket/address for port 27017 is already in use, you can kill the previous connection with these unix commands:
+
+    ````
+        $ ps wuax | grep mongo
+    ````
+
+The output will show a couple of lines of code:
+    
+    ````
+    jstowers          2408   0.3  0.1  2584216   9988   ??  S    Mon03PM   2:04.14 mongod
+    ````
+
+Kill the instance of mongod that is running:
+
+    ```` kill 2408
+
+
 ## Run the Backend Mocha Tests on Your Local Machine
 
 1.  To start the mongod process, open a new tab in the console and type:

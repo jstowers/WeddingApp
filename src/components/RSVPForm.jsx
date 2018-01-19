@@ -8,7 +8,6 @@ import { Form,
 		 Button } from 'react-bootstrap';
 import formStyle from '../../style/01-main.css';
 
-
 class RSVPForm extends Component {
 
 	constructor(props) {
@@ -35,6 +34,39 @@ class RSVPForm extends Component {
 		console.log('==> onSubmit()')
 		console.log('this.state.name =', this.state.name);
 		console.log('this.state.email =', this.state.email);
+
+		let url = "http://localhost:3050/api/guests";
+
+		let body = {
+			'name': this.state.name,
+			'email': this.state.email
+		};
+
+		console.log('body =', body);
+
+		let reqBody = JSON.stringify(body);
+		console.log('reqBody =', reqBody);
+
+		fetch(url, {
+			method: 'POST',
+			body: JSON.stringify(body),
+			//JSON.stringify(body),
+			// //headers: new Headers({
+			// 	'Content-Type': 'application/json'
+			// })
+			mode:'no-cors'
+		})
+		.then(res => {
+			console.log('Inside .then');
+			res.json();
+		})
+		.catch(err => {
+			console.error('Error:', err);
+		})
+		.then(res => {
+			res.json();
+			console.log('Response:', res);
+		})
 	}
 
 	render() {

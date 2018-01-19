@@ -10,10 +10,16 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-// url to connect to guests database
-const url = 'mongodb://localhost:27017';
+const url = 'mongodb://localhost:27017/';
 
-// connect to a test database
+/*
+// url to connect to guests database
+if (process.env.NODE_ENV !== 'test') {
+	const url = 'mongodb://localhost:27017/';
+}
+*/
+
+// connect to a test database inside the Mocha suite
 
 
 // each key-value pair represents a request handler
@@ -51,22 +57,23 @@ module.exports = {
 
 	create(req, res) {
 		
-		// console.log(req.body);
+		console.log(req.body);
 
 		let item = {
 			name: req.body.name,
 			email: req.body.email
 		}
 
-		// console.log('item = ', item);
+		console.log('item = ', item);
 		
 		MongoClient.connect(url, (err, db) => {
 			assert.equal(null, err);
 			console.log("successfully connected to MongoDB.");
+			console.log('item =', item);
 
 			const weddingDB = db.db('weddingDB');
 
-			weddingDB.collection('guests').insertOne(item, (err, result) => {
+			weddingDB.collection('guests').insertOne(item, (err, res) => {
 				assert.equal(null, err);
 				console.log('a new guest was added to the guests collection.');
 				res.status(200).send('success');
