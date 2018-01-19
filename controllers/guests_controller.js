@@ -13,6 +13,8 @@ const assert = require('assert');
 // url to connect to guests database
 const url = 'mongodb://localhost:27017';
 
+// connect to a test database
+
 
 // each key-value pair represents a request handler
 module.exports = {

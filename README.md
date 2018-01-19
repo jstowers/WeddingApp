@@ -2,7 +2,7 @@
 An interactive, dynamic wedding app built with React, Node, Express, and MongoDB (MERN).
 
 ## Run the App on Your Local Machine
-1.  To start the frontend client server on port 8080, open a new tab in the console, move to the WeddingApp root directory, and run:
+1.  To start the frontend client server on port 8080, open a new tab in the console, change to the WeddingApp root directory, and run:
     ````
         $ npm run serve
     ````
@@ -12,15 +12,15 @@ An interactive, dynamic wedding app built with React, Node, Express, and MongoDB
         http://localhost:8080
     ````
 
-3.  To start the backend Node/Express server on port 3050, open a new tab in the console, move to the WeddingApp root directory, and run:
+3.  To start the backend Node/Express server on port 3050, open a new tab in the console, change to the WeddingApp root directory, and run:
     ````
         $ node app.js
     ````
 
 4.  To start the mongod process on your local machine, open a new tab in the console and run the following command:
-````
+    ````
         $ mongod
-````
+    ````
 
 mongod is the main background process (daemon) that handles data requests, manages data access, and performs background management operations for the Mongo database.
 
@@ -32,7 +32,7 @@ mongod is the main background process (daemon) that handles data requests, manag
     ````
 If the mongod process is not running in the background, the Mocha tests attempting to connect to the Mongo database will fail.
 
-2.  To run the Mocha test suite, open a new tab in the console, move to the WeddingApp directory, and run the test script:
+2.  To run the Mocha test suite, open a new tab in the console, change to the WeddingApp directory, and run this test script:
     ````
         $ npm run test
     ````
@@ -136,9 +136,36 @@ Grider, MongoDB, Sec. 14, Lec. 111
 ### Monday, January 14, 2018
 
 ___Goals___
-
 - Complete Mocha tests for GET and POST requests
 - Connect React app to Express server
+- Implement an environment variable to separate development and test environments.
+
+#### Environment Variables
+___Definition___
+Environment variables stored on your machine, outside the world of Node and your React app.
+
+It is a global variable that can be referenced inside of Node.
+
+Purpose:
+1.  Customize behavior
+2.  Encode a number of constants to access in an application
+
+___NODE_ENV___
+- Very common environment variable in Node development
+- Used to determine whether application is running in Development, Test, Production, or any other environment type.
+- All enviroment variables placed in the _process.ENV_ object:
+    
+    ````
+    process.env.NODE_ENV
+    ````
+
+
+
+
+
+
+
+
 
 
 

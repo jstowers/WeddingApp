@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "build": "webpack",
-        "test": "nodemon --exec 'mocha --recursive -R min'",
+        "start": "node app.js",
+        "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'",
         "serve": "webpack-dev-server"
     },
     "repository": {
