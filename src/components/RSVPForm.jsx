@@ -9,8 +9,6 @@ import { Form,
 		 Button } from 'react-bootstrap';
 import formStyle from '../../style/01-main.css';
 
-
-
 class RSVPForm extends Component {
 
 	constructor(props) {
@@ -34,15 +32,13 @@ class RSVPForm extends Component {
 	}
 
 	onSubmit = () => {
-		console.log('==> onSubmit()')
-
+	
 		let url = "http://localhost:3050/api/guests";
 
 		let body = {
 			'name': this.state.name,
 			'email': this.state.email
 		}
-		console.log('body =', body);
 
 		axios.post(url, body)
 		.then(res => {
@@ -51,30 +47,6 @@ class RSVPForm extends Component {
 		.catch(err => {
 			console.log('err =', err);
 		})
-
-		/*
-		fetch(url, {
-			method: 'GET',
-			/*
-			body: JSON.stringify(body),
-			// //headers: new Headers({
-			// 	'Content-Type': 'application/json'
-			// })
-			mode:'no-cors'
-		})
-		.then(res => {
-			console.log('Inside .then');
-			console.log('res =', res);
-			res.json();
-		})
-		.catch(err => {
-			console.error('Error:', err);
-		})
-		.then(response => {
-
-			console.log('Response:', response);
-		})
-		*/
 	}
 
 	render() {

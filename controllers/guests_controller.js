@@ -72,9 +72,11 @@ module.exports = {
 
 			const weddingDB = db.db('weddingDB');
 
-			weddingDB.collection('guests').insertOne(item, (err, res) => {
+			weddingDB.collection('guests').insertOne(item, (err, response) => {
 				assert.equal(null, err);
 				console.log('a new guest was added to the guests collection.');
+				console.log('response = ', res);
+				res.status(200).send('success');
 				db.close();
 			});
 		});
