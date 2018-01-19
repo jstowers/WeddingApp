@@ -69,14 +69,12 @@ module.exports = {
 		MongoClient.connect(url, (err, db) => {
 			assert.equal(null, err);
 			console.log("successfully connected to MongoDB.");
-			console.log('item =', item);
 
 			const weddingDB = db.db('weddingDB');
 
 			weddingDB.collection('guests').insertOne(item, (err, res) => {
 				assert.equal(null, err);
 				console.log('a new guest was added to the guests collection.');
-				res.status(200).send('success');
 				db.close();
 			});
 		});
