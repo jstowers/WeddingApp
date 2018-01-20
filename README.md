@@ -195,10 +195,47 @@ Working on deployment to AWS Elastic Beanstalk
     
     On page load, the application doesn't render.  It is having trouble finding the root directory.
 
+    I did not specify a route for my root file in Express.  I then added the following code to my routes.js file:
 
+    ````
+        app.get('/', (req, res) => {
+            res.send('Hi There');
+        });
 
+    ````
 
+    When I repackaged and redeployed to AWS, the homepage displayed a simple 'Hi There'.
 
+3.  Need to Render Static React Components Using a Webpack Build Inside Express
+    
+    The webpack-dev-server works great for development but does not spin up when I deploy to AWS.  I need some way to load my index.html and my webpack bundle.js file.
 
+    https://stackoverflow.com/questions/39558118/webpack-express-js-doesnt-load-bundle-js
 
+    Going to try webpack-dev-middleware as my goto option.
 
+    From the website:  webpack-dev-middleware requires Node v6 or higher, and must be used with a server that accepts express-style middleware.
+
+4.  Getting Webpack to Play Nice with Node and Express . . . Argggh!!
+    This took me almost 7 hours to complete.
+
+    Moving from a webpack dev server build to using Express in preparation for deploymet was a PAIN!
+
+    See Stephen Grider, Webpack, Sec. 5, Lec. 36, "Troubleshooting Vendor Bundles"
+
+    Here he adds the HTMLWebpackPlugin to the webpack.config.js file that injects the _<script>__ tags for the index.html file that is saved in the build/ directory.
+
+    _webpack.config.js_
+    ````
+        const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+        const config = {
+            // other config properties omitted
+            plugins: [
+                new HtmlWebpackPlugin({
+                    template: 'src/index.html'
+                })
+            ]
+        }
+    ````
+    The template property means that this plugin will look to the index.html file saved in the src directory for guidance on creating the index.html file in the build directory.

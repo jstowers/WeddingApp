@@ -13,21 +13,27 @@ module.exports = (app) => {
 		req => Express => res
 	*/
 
+	/*
 	app.get('/', (req, res) => {
 		// request ad reponse are objects;
 		// res.sendFile('index.html');
 		// res.render('index');
-		res.send('Hi There');
-		// res.sendFile(path.join(__dirname, '../build/bundle.js'));
+		// res.send('Hi There');
+		// loads index.html page
+		// console.log('__dirname =', __dirname);
+		const rootPath = path.join(__dirname, '../index.html');
+		console.log('rootPath =', rootPath);
+		res.sendFile(rootPath);
 
 	});
+	*/
+	
 
 	// Watch for incoming requests of method GET
 	// to the route http://localhost:3050/api
 	app.get('/api/', GuestsController.greeting);
 
-	// app.get('/api/guests', GuestsController.getData);
-
+	// Handles POST request to MongoDB to add a guest
 	// passing a reference to GuestsController.create
 	app.post('/api/guests', GuestsController.create);
 

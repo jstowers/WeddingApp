@@ -1,10 +1,14 @@
 // handled by nodeJS runtime
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 // webpack links up JS modules together
 const config = {
 
-  	entry: './src/index.js',
+  	entry: {
+        bundle: './src/index.js'
+    },
 
   	// Output - where the output goes
   	// must specify an absolute file reference
@@ -12,7 +16,7 @@ const config = {
   	// usually save output to folder 'build'
   	output: {
   		  path: path.resolve(__dirname, 'build'),
-  		  publicPath: 'build/',
+  		  //publicPath: '/',
       	filename: 'bundle.js'
     },
 
@@ -45,14 +49,18 @@ const config = {
     					},
     					'image-webpack-loader'
     				],
-    				test: /\.(jpe?g|png|gif|svg)$/,
-
+    				test: /\.(jpe?g|png|gif|svg)$/
     			}
     		]
     },
     resolve: {
         extensions: ['.js', '.jsx']
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: 'src/index.html'
+        })
+    ]
 }
 
 module.exports = config;
