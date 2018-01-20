@@ -184,8 +184,16 @@ ___NODE_ENV___
     process.env.NODE_ENV
     ````
 
+### Saturday, January 20, 2018
+Working on deployment to AWS Elastic Beanstalk
 
+1.  _502 Bad Gateway Error_
 
+    I had not properly defined my PORT envt variable in my app.js file.  So Nginix server was running on Port 8080 and I had only set up Port 3050 for my Express app.  After adding the PORT envt variable, this error disappeared.
+
+2.  _Cannot GET /_
+    
+    On page load, the application doesn't render.  It is having trouble finding the root directory.
 
 
 
