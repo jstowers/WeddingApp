@@ -239,3 +239,43 @@ Working on deployment to AWS Elastic Beanstalk
         }
     ````
     The template property means that this plugin will look to the index.html file saved in the src directory for guidance on creating the index.html file in the build directory.
+
+    _4:15pm_
+    I have encountered problems deploying the app to AWS.  
+
+    The app builds with npm run build and creates the bundle.js and index.html file in the build folder.  When I start the local Express server, the React component renders fine.  But when I zip the files and deploy to AWS, the webpage gives an error for the ReactDOM render in index.js.
+
+### Sunday, January 21, 2019
+    _12:19am_
+
+    Updated app.js to include an IF statement to apply the webpack middleware when NODE_ENV !== 'production'
+
+
+To test "production" setting on local server:
+
+    $ NODE_ENV=production node app.js
+
+SUCCESS . . . after 8 hours!!
+After spending about 8 hours on this issue, was finally able to deploy the app to AWS!!
+
+Deployed the app to AWS Beanstalk with the following changes:
+1.  Productoin vs. Development:
+
+````
+    if (process.env.NODE_ENV !== 'production') {
+        const webpackMiddleware = require('webpack-dev-middleware');
+        const webpack = require('webpack');
+        const webpackConfig = require('./webpack.config.js');
+        app.use(webpackMiddleware(webpack(webpackConfig)));
+    } else {
+        app.use(express.static('build'));
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, 'build/index.html'));
+        });
+    }
+````
+
+2.  Set NODE_ENV variable to production in AWS Beanstalk
+
+
+

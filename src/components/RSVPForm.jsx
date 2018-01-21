@@ -33,7 +33,7 @@ class RSVPForm extends Component {
 
 	onSubmit = () => {
 	
-		let url = "http://localhost:3050/api/guests";
+		let url = "http://localhost:3000/api/guests";
 
 		let body = {
 			'name': this.state.name,

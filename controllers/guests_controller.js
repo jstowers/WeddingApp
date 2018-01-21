@@ -10,7 +10,20 @@
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-const url = 'mongodb://localhost:27017/';
+// localhost
+// const url = 'mongodb://localhost:27017/';
+
+// connects to MongoDB but the POST requests fails:
+const url = 'mongodb+srv://jstowers:<D2pl8wlTg3Cy78VC>@ij1-zha7t.mongodb.net/';
+
+/* 
+// can't connect to MongoDB - authentication errors
+const url = 'mongodb://jstowers:<D2pl8wlTg3Cy78VC>@ij1-shard-00-00-'+ 
+'zha7t.mongodb.net:27017,ij1-shard-00-01-'+
+'zha7t.mongodb.net:27017,ij1-shard-00-02-'+
+'zha7t.mongodb.net:27017/weddingDB?ssl=true&replicaSet=IJ1-shard-'+
+'0&authSource=admin/';
+*/
 
 /*
 // url to connect to guests database
@@ -56,6 +69,41 @@ module.exports = {
 	},
 
 	create(req, res) {
+
+		console.log(req.body);
+
+		let item = {
+			name: req.body.name,
+			email: req.body.email
+		}
+		console.log('item = ', item);
+
+		MongoClient.connect(url, (err, client) => {
+			assert.equal(null, err);
+			console.log("successfully connected to MongoDB.");
+
+			const db = client.db('weddingDB');
+			const guests = db.collection('guests');
+
+			guests.insertOne(item);
+
+			console.log("added a new guest to the database.");
+
+			client.close();
+
+			/*
+			guests.insert(item, (err, response) => {
+				assert.equal(null, err);
+				console.log('a new guest was added to the guests collection.');
+				res.status(200).send('success');
+				client.close();
+			});
+			*/
+		});
+	}
+
+	/*
+	create(req, res) {
 		
 		console.log(req.body);
 
@@ -80,4 +128,5 @@ module.exports = {
 			});
 		});
 	}
+	*/
 }

@@ -31,9 +31,9 @@ const config = {
     		rules: [
     			{
     				use: 'babel-loader',
-    				// assign a regex expression to apply babel to only .js files
+    				// assign a regex expression to only apply babel to .js or .jsx files
     				test: /\.(js|jsx)$/,
-    				// don't apply bable to files in node_modules directory
+    				// don't apply babel to files in node_modules directory
     				exclude: /node_modules/
     			},
     			{
