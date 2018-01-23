@@ -278,4 +278,15 @@ Deployed the app to AWS Beanstalk with the following changes:
 2.  Set NODE_ENV variable to production in AWS Beanstalk
 
 
+### Monday, January 22, 2018
+
+After much frustration with MongoDB Atlas free tier M0 not working correctly, and knowing that  my code worked perfectly on the localhost, I read much of Mongo's fine print regarding the free tier.  One big caveat is that server side JavaScript does not function on the free tiers.
+
+Once I ponied up the $$$ for the M10 tier, the lowest tier with full MongoDB Atlas functionality, everything worked like a charm!
+
+### Tuesday, January 23, 2018
+
+Last night, I face difficulty deploying my app and having the POST and GET routes work correctly.  The url was consistently localhost:3000 in the webpack build.
+
+So, this morning, based on Stephen Grider's Webpack lecture (Sec. 9, Lec. 52, 7:45), I am moving my routes call above the webpack build IF statements in app.js.  This should expose my API endpoints correctly.
 

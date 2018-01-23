@@ -15,8 +15,6 @@ class RSVPForm extends Component {
 	constructor(props) {
 		super(props);
 
-		const localUrl = 'http://localhost:3000';
-
 		this.state = {
 			name:'',
 			numGuests:'',
@@ -43,8 +41,9 @@ class RSVPForm extends Component {
 		let endpoint = '/api/guests';	
 
 		if (process.env.NODE_ENV === 'production') {
-			url = this.prodUrl + endpoint;
-			
+			url = `http://localhost:${process.env.PORT}${endpoint}`;
+			console.log('url onSubmit = ', url);
+			// url = this.prodUrl + endpoint;
 		} else {
 			url = this.devUrl + endpoint;
 		}

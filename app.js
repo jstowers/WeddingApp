@@ -19,6 +19,9 @@ const app = express();
 // bodyParser must be placed above routes(app)
 app.use(bodyParser.json());
 
+// Routes defined specifically for Express
+routes(app);
+
 // Webpack Middleware Configuration
 // see Grider, Webpack, Sec. 9, Lec. 51
 // webpackMiddleware intercepts incoming requests and hands
@@ -46,9 +49,6 @@ app.use((req, res, next) => {
 	next();
 });
 */
-
-// Routes defined specifically for Express
-routes(app);
 
 // listen for incoming HTTP requests on specified port
 const PORT = process.env.PORT || 3000;
