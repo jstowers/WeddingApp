@@ -1,41 +1,31 @@
 // Sunday, January 14, 2018
 
 /*
-
-	PURPOSE: the request-handling logic for the Guests data is contained here.
+	PURPOSE: the request-handling logic for the MongoDB wedding database is contained here.
 	Usually have one controller for each resource used within the applicaiton.
-
 */
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-// localhost
+// localhost for mongod process
 // const url = 'mongodb://localhost:27017/';
 
-// connects to MongoDB but the POST requests fails:
-const url = 'mongodb+srv://jstowers:<D2pl8wlTg3Cy78VC>@ij1-zha7t.mongodb.net/';
-
-/* 
-// can't connect to MongoDB - authentication errors
-const url = 'mongodb://jstowers:<D2pl8wlTg3Cy78VC>@ij1-shard-00-00-'+ 
-'zha7t.mongodb.net:27017,ij1-shard-00-01-'+
-'zha7t.mongodb.net:27017,ij1-shard-00-02-'+
-'zha7t.mongodb.net:27017/weddingDB?ssl=true&replicaSet=IJ1-shard-'+
-'0&authSource=admin/';
-*/
-
 /*
-// url to connect to guests database
+// url to connect to local guests database
 if (process.env.NODE_ENV !== 'test') {
 	const url = 'mongodb://localhost:27017/';
 }
 */
 
-// connect to a test database inside the Mocha suite
+// MongoDB Atlas ij2 Cluster - M10 Instance Size
+const url = 'mongodb://jstowers:D2pl8wlTg3Cy78VC@ij2-shard-00-00-'+
+	'zha7t.mongodb.net:27017,ij2-shard-00-01-'+
+	'zha7t.mongodb.net:27017,ij2-shard-00-02-'+
+	'zha7t.mongodb.net:27017/test?ssl=true&replicaSet=IJ2-shard-'+
+	'0&authSource=admin';
 
-
-// each key-value pair represents a request handler
+// each key-value pair in the module represents a request handler
 module.exports = {
 
 	// greeting 
@@ -44,39 +34,37 @@ module.exports = {
 		res.send({ hi: 'there' });
 	},
 
-	getData(req, res) {
+	// Works on MongoDB Atlas with M10 Cluster Size
+	// Does not work on free tier
+	get(req, res) {
 
 		let resultArr = [];
 
-		MongoClient.connect(url, (err, db) => {
+		MongoClient.connect(url, (err, client) => {
 			assert.equal(null, err);
 			console.log('successfully connected to MongoDB.');
 
-			const weddingDB = db.db('weddingDB');
+			const db = client.db('weddingDB');
+			const guests = db.collection('guests');
 			
-			let cursor = weddingDB.collection('guests').find();
+			let cursor = guests.find();
 			cursor.forEach((doc, err) => {
 				assert.equal(null, err);
 				resultArr.push(doc);
 			}, () => {
+				console.log('resultArr = ', resultArr);
 				res.status(200).send(resultArr);
-				db.close();
-				// res.render sends data back to the index page 
-				// to render to an object called items
-				// res.render('index', items: resultArr);
+				client.close();
 			});
 		});
 	},
 
 	create(req, res) {
 
-		console.log(req.body);
-
 		let item = {
 			name: req.body.name,
 			email: req.body.email
 		}
-		console.log('item = ', item);
 
 		MongoClient.connect(url, (err, client) => {
 			assert.equal(null, err);
@@ -85,48 +73,25 @@ module.exports = {
 			const db = client.db('weddingDB');
 			const guests = db.collection('guests');
 
-			guests.insertOne(item);
-
-			console.log("added a new guest to the database.");
-
-			client.close();
-
-			/*
-			guests.insert(item, (err, response) => {
+			guests.insertOne(item, (err, response) => {
 				assert.equal(null, err);
-				console.log('a new guest was added to the guests collection.');
+				console.log('a guest was added to the guests collection.');
 				res.status(200).send('success');
 				client.close();
 			});
-			*/
 		});
 	}
-
-	/*
-	create(req, res) {
-		
-		console.log(req.body);
-
-		let item = {
-			name: req.body.name,
-			email: req.body.email
-		}
-
-		console.log('item = ', item);
-		
-		MongoClient.connect(url, (err, db) => {
-			assert.equal(null, err);
-			console.log("successfully connected to MongoDB.");
-
-			const weddingDB = db.db('weddingDB');
-
-			weddingDB.collection('guests').insertOne(item, (err, response) => {
-				assert.equal(null, err);
-				console.log('a new guest was added to the guests collection.');
-				res.status(200).send('success');
-				db.close();
-			});
-		});
-	}
-	*/
 }
+
+
+/*	MongoDB Sandbox Code
+			
+	.toArray() returns a promsie => gets stuck in pending
+	// let allGuestsArr = guests.find().toArray();
+	// console.log('allGuestsArr =', allGuestsArr);
+	// res.status(200).send(allGuestsArr);
+	
+
+	// let atlasSize = db.adminCommand({atlasSize:1});
+	// res.status(200).send(atlasSize);
+*/

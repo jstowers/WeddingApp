@@ -6,6 +6,7 @@ import { Form,
 		 FormControl, 
 		 ControlLabel,
 		 ButtonToolbar,
+		 ButtonGroup,
 		 Button } from 'react-bootstrap';
 import formStyle from '../../style/01-main.css';
 
@@ -14,6 +15,8 @@ class RSVPForm extends Component {
 	constructor(props) {
 		super(props);
 
+		const localUrl = 'http://localhost:3000';
+
 		this.state = {
 			name:'',
 			numGuests:'',
@@ -21,6 +24,9 @@ class RSVPForm extends Component {
 			phone:'',
 			songRequest:''
 		}
+
+		this.devUrl = 'http://localhost:3000';
+		this.prodUrl = 'http://ivyjoe2018.us-east-1.elasticbeanstalk.com';
 	}
 
 	handleInputChange = (e) => {
@@ -32,8 +38,16 @@ class RSVPForm extends Component {
 	}
 
 	onSubmit = () => {
-	
-		let url = "http://localhost:3000/api/guests";
+
+		let url = '';
+		let endpoint = '/api/guests';	
+
+		if (process.env.NODE_ENV === 'production') {
+			url = this.prodUrl + endpoint;
+			
+		} else {
+			url = this.devUrl + endpoint;
+		}
 
 		let body = {
 			'name': this.state.name,
@@ -41,6 +55,26 @@ class RSVPForm extends Component {
 		}
 
 		axios.post(url, body)
+		.then(res => {
+			console.log('res =', res);	
+		})
+		.catch(err => {
+			console.log('err =', err);
+		})
+	}
+
+	onClick = () => {
+
+		let url = '';
+		let endpoint = '/api/data';
+
+		if (process.env.NODE_ENV === 'production') {
+			url = this.prodUrl + endpoint;
+		} else {
+			url = this.devUrl + endpoint;
+		}
+
+		axios.get(url)
 		.then(res => {
 			console.log('res =', res);
 		})
@@ -53,20 +87,16 @@ class RSVPForm extends Component {
 		return (
 			<div className = { formStyle }>
 				<Form horizontal>
-					<FormGroup controlId="name">	
-						<Col componentClass={ ControlLabel } sm={2}>
-							 Name
-						</Col>
-						<Col sm={10}>
-							<FormControl 
-								 type="text" 
-								 value={ this.state.name }
-								 placeholder="Name"
-								 onChange={ this.handleInputChange }
-							/>
-						</Col>
+					<FormGroup controlId="name">
+						<ControlLabel>Name</ControlLabel>
+						<FormControl 
+							 type="text" 
+							 value={ this.state.name }
+							 placeholder="Name"
+							 onChange={ this.handleInputChange }
+						/>
 					</FormGroup>
-					<FormGroup>	
+					<FormGroup>
 						<ControlLabel>Email</ControlLabel>
 						<FormControl
 							id="email"
@@ -75,7 +105,19 @@ class RSVPForm extends Component {
 							placeholder="Please add your email"
 							onChange={ this.handleInputChange }
 						/>
-					</FormGroup>	
+					</FormGroup>
+					<ButtonToolbar>
+						<ControlLabel># Adults</ControlLabel>
+
+						<ButtonGroup>
+							<Button>1</Button>
+							<Button>2</Button>
+							<Button>3</Button>
+
+						</ButtonGroup>
+
+
+					</ButtonToolbar>
 				</Form>
 				<ButtonToolbar>
 			        <Button 
@@ -86,6 +128,11 @@ class RSVPForm extends Component {
 						type="submit"
 						bsStyle="primary"
 						onClick= { this.onSubmit }>Submit
+			        </Button>
+			        <Button 
+						type="submit"
+						bsStyle="primary"
+						onClick= { this.onClick }>Get Data
 			        </Button>
 				</ButtonToolbar>
 			</div>
