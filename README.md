@@ -290,3 +290,7 @@ Last night, I face difficulty deploying my app and having the POST and GET route
 
 So, this morning, based on Stephen Grider's Webpack lecture (Sec. 9, Lec. 52, 7:45), I am moving my routes call above the webpack build IF statements in app.js.  This should expose my API endpoints correctly.
 
+9:27am - deploy WeddingApp-ver14
+
+
+

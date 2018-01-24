@@ -7,7 +7,9 @@
         "build": "webpack",
         "start": "node app.js",
         "test": "nodemon --exec 'mocha --recursive -R min'",
-        "serve": "webpack-dev-server"
+        "serve": "webpack-dev-server",
+        "build:dev": "NODE_ENV=develop npm run build",
+        "build:production": "NODE_ENV=production npm run build"
     },
     "repository": {
         "type": "git",

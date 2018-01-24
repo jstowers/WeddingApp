@@ -1,6 +1,21 @@
 // handled by nodeJS runtime
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+let apiHost;
+
+let setupAPI = function() {
+    switch(process.env.NODE_ENV) {
+        case 'production':
+            apiHost = "'http://ivyjoe2018.us-east-1.elasticbeanstalk.com/'";
+            break;
+        case 'develop':
+        default:
+            apiHost = "'http://localhost:3000/'";
+            break;
+    }
+}();
 
 
 // webpack links up JS modules together
@@ -59,6 +74,9 @@ const config = {
     plugins: [
         new HtmlWebpackPlugin({
             template: 'src/index.html'
+        }),
+        new webpack.DefinePlugin({
+            __API__: apiHost
         })
     ]
 }

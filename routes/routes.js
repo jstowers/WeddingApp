@@ -1,7 +1,7 @@
 // January 14, 2018
 
-const GuestsController = require('../controllers/guests_controller');
 const path = require('path');
+const GuestsController = require('../controllers/guests_controller');
 
 /*
 	Define Request Handlers
@@ -11,11 +11,10 @@ const path = require('path');
 
 module.exports = (app) => {
 
-
-	// Watch for incoming requests of method GET
-	// to the route http://localhost:3050/api
+	// Sample GET request
 	app.get('/api/', GuestsController.greeting);
 
+	// Handles GET request to MongoDB to retrieve all guests
 	app.get('/api/data', GuestsController.get);
 
 	// Handles POST request to MongoDB to add a guest

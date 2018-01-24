@@ -23,8 +23,8 @@ class RSVPForm extends Component {
 			songRequest:''
 		}
 
-		this.devUrl = 'http://localhost:3000';
-		this.prodUrl = 'http://ivyjoe2018.us-east-1.elasticbeanstalk.com';
+		this.hostUrl = __API__;
+
 	}
 
 	handleInputChange = (e) => {
@@ -37,16 +37,9 @@ class RSVPForm extends Component {
 
 	onSubmit = () => {
 
-		let url = '';
-		let endpoint = '/api/guests';	
-
-		if (process.env.NODE_ENV === 'production') {
-			url = `http://localhost:${process.env.PORT}${endpoint}`;
-			console.log('url onSubmit = ', url);
-			// url = this.prodUrl + endpoint;
-		} else {
-			url = this.devUrl + endpoint;
-		}
+		let newGuestPath = 'api/guests';
+		let url = this.hostUrl + newGuestPath;
+		console.log('url onSubmit =', url);
 
 		let body = {
 			'name': this.state.name,
@@ -64,14 +57,9 @@ class RSVPForm extends Component {
 
 	onClick = () => {
 
-		let url = '';
-		let endpoint = '/api/data';
-
-		if (process.env.NODE_ENV === 'production') {
-			url = this.prodUrl + endpoint;
-		} else {
-			url = this.devUrl + endpoint;
-		}
+		let getGuestsPath = 'api/data';
+		let url = this.hostUrl + getGuestsPath;
+		console.log('url onClick =', url);
 
 		axios.get(url)
 		.then(res => {
