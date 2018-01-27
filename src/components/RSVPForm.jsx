@@ -5,10 +5,13 @@ import { Form,
 		 FormGroup, 
 		 FormControl, 
 		 ControlLabel,
+		 Modal,
 		 ButtonToolbar,
 		 ButtonGroup,
-		 Button } from 'react-bootstrap';
+		 Button,
+		 Table } from 'react-bootstrap';
 import formStyle from '../../style/01-main.css';
+import RSVPConfirm from './RSVPConfirm';
 
 class RSVPForm extends Component {
 
@@ -17,12 +20,18 @@ class RSVPForm extends Component {
 
 		this.state = {
 			name:'',
-			numGuests:'',
 			email:'',
 			phone:'',
-			songRequest:''
+			numAdults:0,
+			numChildren:0,
+			songRequest:'',
+			despacito:'',
+			showModal:false
 		}
 
+		this.baseState = this.state;
+
+		// defined in webpack.config file
 		this.hostUrl = __API__;
 
 	}
@@ -35,16 +44,31 @@ class RSVPForm extends Component {
 		this.setState({ [id]:value });
 	}
 
-	onSubmit = () => {
+	toggleModal = () => {
+		this.setState({ showModal: !this.state.showModal });
+	}
+
+	onFormCancel = () => {
+		this.setState(this.baseState);
+	}
+
+	onFormSubmit = () => {
 
 		let newGuestPath = 'api/guests';
 		let url = this.hostUrl + newGuestPath;
-		console.log('url onSubmit =', url);
 
 		let body = {
 			'name': this.state.name,
-			'email': this.state.email
+			'email': this.state.email,
+			'numAdults': this.state.numAdults,
+			'numChildren': this.state.numChildren,
+			'songRequest': this.state.songRequest
 		}
+
+		this.toggleModal();
+
+		/*
+		console.log('onSubmit body =', body);
 
 		axios.post(url, body)
 		.then(res => {
@@ -53,30 +77,50 @@ class RSVPForm extends Component {
 		.catch(err => {
 			console.log('err =', err);
 		})
+		*/
+	
 	}
 
-	onClick = () => {
-
-		let getGuestsPath = 'api/data';
-		let url = this.hostUrl + getGuestsPath;
-		console.log('url onClick =', url);
-
-		axios.get(url)
-		.then(res => {
-			console.log('res =', res);
-		})
-		.catch(err => {
-			console.log('err =', err);
-		})
+	modalBody = () => {
+		return (
+			<div>
+				<h2>
+					<b>{this.state.name},</b>
+				</h2>
+				<h4>
+					Your presence is an honor to our familes!
+					<br />
+					<br />
+				</h4>
+				<Table>
+					<tbody>
+						<tr>
+							<td>Number of Adults</td>
+							<td><b>{ this.state.numAdults }</b></td>
+						</tr>
+						<tr>
+							<td>Number of Children</td>
+							<td><b>{ this.state.numChildren }</b></td>
+						</tr>
+						<tr>
+							<td>Your Song Request</td>
+							<td><b>{ this.state.songRequest }</b></td>
+						</tr>
+					</tbody>
+				</Table>
+				<h3>Bienvenidos a Albuquerque!</h3>
+			</div>
+		)
 	}
 
 	render() {
 		return (
 			<div className = { formStyle }>
 				<Form horizontal>
-					<FormGroup controlId="name">
+					<FormGroup>
 						<ControlLabel>Name</ControlLabel>
-						<FormControl 
+						<FormControl
+							 id="name" 
 							 type="text" 
 							 value={ this.state.name }
 							 placeholder="Name"
@@ -93,38 +137,119 @@ class RSVPForm extends Component {
 							onChange={ this.handleInputChange }
 						/>
 					</FormGroup>
-					<ButtonToolbar>
-						<ControlLabel># Adults</ControlLabel>
-
-						<ButtonGroup>
-							<Button>1</Button>
-							<Button>2</Button>
-							<Button>3</Button>
-
-						</ButtonGroup>
-
-
-					</ButtonToolbar>
+					<FormGroup>
+						<ControlLabel>Number of Adults</ControlLabel>
+						<FormControl
+							id="numAdults"
+							type="number"
+							value={ this.state.numAdults }
+							placeholder="Number of adults in your party"
+							onChange={ this.handleInputChange }
+						/>
+					</FormGroup>
+					<FormGroup>
+						<ControlLabel>Number of Children (ages 5-12)</ControlLabel>
+						<FormControl
+							id="numChildren"
+							type="number"
+							value={ this.state.numChildren }
+							placeholder="Number of children in your party"
+							onChange={ this.handleInputChange }
+						/>
+					</FormGroup>
+					<FormGroup>
+						<ControlLabel>Song Request</ControlLabel>
+						<FormControl
+							 id="songRequest" 
+							 type="text" 
+							 value={ this.state.songRequest }
+							 placeholder="Enter your song request"
+							 onChange={ this.handleInputChange }
+						/>
+					</FormGroup>
 				</Form>
 				<ButtonToolbar>
 			        <Button 
 			        	bsStyle="danger"
-		        		style={{color: 'white', 'textDecoration':'none'}}>Cancel
+		        		style={{color: 'white', 'textDecoration':'none'}}
+		        		onClick= { this.onFormCancel }>Cancel
         			</Button>
 					<Button 
 						type="submit"
 						bsStyle="primary"
-						onClick= { this.onSubmit }>Submit
-			        </Button>
-			        <Button 
-						type="submit"
-						bsStyle="primary"
-						onClick= { this.onClick }>Get Data
+						onClick= { this.onFormSubmit }>Submit
 			        </Button>
 				</ButtonToolbar>
+				<Modal show={this.state.showModal} onHide={this.toggleModal}>
+				    <Modal.Header>
+			      		<h1>RSVP Confirmation</h1>
+			      		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
+				    </Modal.Header>
+				    <Modal.Body>
+				    	{this.modalBody()}
+			    	</Modal.Body>
+				    <Modal.Footer>
+				      <Button onClick={this.toggleModal}>Go Back</Button>
+				      <Button bsStyle="primary">Confirm RSVP</Button>
+				    </Modal.Footer>
+			  	</Modal>
 			</div>
 		);
 	}
 }
 
 export default RSVPForm;
+
+
+/*
+	// Used to Delete Database
+	onDelete = () => {
+		let deleteGuestsPath = 'api/delete';
+		let url = this.hostUrl + deleteGuestsPath;
+		console.log('url onDelete =', url);
+
+		axios.get(url)
+		.then(res => {
+			console.log('res =', res);
+		})
+		.catch(err => {
+			console.log('err =', err);
+		})
+	}
+
+	// Used to Get All Guests from Database
+	onClick = () => {
+
+		let getGuestsPath = 'api/data';
+		let url = this.hostUrl + getGuestsPath;
+		console.log('url onClick =', url);
+
+		axios.get(url)
+		.then(res => {
+			console.log('res =', res);
+		})
+		.catch(err => {
+			console.log('err =', err);
+		})
+	}
+
+	// Did not work => a proposed Dev Button Toolbar
+	showDevButtons = () => {
+
+		if (process.env.NODE_ENV === 'develop') {
+			console.log('inside showDevButtons');
+			return (
+				<div>
+					<ButtonToolbar>
+
+				        <Button 
+							type="submit"
+							bsStyle="primary"
+							onClick= { this.onClick }>Get Data
+				        </Button>
+					</ButtonToolbar>
+				</div>
+			)
+		}
+	}
+*/
