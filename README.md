@@ -293,4 +293,19 @@ So, this morning, based on Stephen Grider's Webpack lecture (Sec. 9, Lec. 52, 7:
 9:27am - deploy WeddingApp-ver14
 
 
+// CORS Configuration on AWS S3
+
+````
+    <!-- Sample policy -->
+    <CORSConfiguration>
+        <CORSRule>
+            <AllowedOrigin>*</AllowedOrigin>
+            <AllowedMethod>GET</AllowedMethod>
+            <MaxAgeSeconds>3000</MaxAgeSeconds>
+            <AllowedHeader>Authorization</AllowedHeader>
+        </CORSRule>
+    </CORSConfiguration>
+````
+
+
 

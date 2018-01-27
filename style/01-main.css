@@ -15,3 +15,8 @@ h3 {
 	font-style: italic;
 	color: rgb(64,224,208);
 }
+
+h4 {
+	font-family: "Open Sans";
+	font-size: 16px;
+}

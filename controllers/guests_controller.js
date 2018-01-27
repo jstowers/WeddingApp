@@ -11,13 +11,6 @@ const assert = require('assert');
 // localhost for mongod process
 // const url = 'mongodb://localhost:27017/';
 
-/*
-// url to connect to local guests database
-if (process.env.NODE_ENV !== 'test') {
-	const url = 'mongodb://localhost:27017/';
-}
-*/
-
 // MongoDB Atlas ij2 Cluster - M10 Instance Size
 const url = 'mongodb://jstowers:D2pl8wlTg3Cy78VC@ij2-shard-00-00-'+
 	'zha7t.mongodb.net:27017,ij2-shard-00-01-'+
@@ -28,8 +21,7 @@ const url = 'mongodb://jstowers:D2pl8wlTg3Cy78VC@ij2-shard-00-00-'+
 // each key-value pair in the module represents a request handler
 module.exports = {
 
-	// greeting 
-	// ES6 syntax for key-value pair
+	// Greeting - sample API request
 	greeting(req, res) {
 		res.send({ hi: 'there' });
 	},
@@ -44,8 +36,13 @@ module.exports = {
 			assert.equal(null, err);
 			console.log('successfully connected to MongoDB.');
 
-			const db = client.db('weddingDB');
-			const guests = db.collection('guests');
+			if (process.env.NODE_ENV === 'production') {
+				let db = client.db('weddingDB');
+				let guests = db.collection('guests');
+			} else {
+				db = client.db('weddingDB-dev');
+				guests = db.collection('guests');
+			}
 			
 			let cursor = guests.find();
 			cursor.forEach((doc, err) => {
@@ -61,11 +58,37 @@ module.exports = {
 
 	create(req, res) {
 
+		console.log('create req.body =', req.body);
+
 		let item = {
 			name: req.body.name,
-			email: req.body.email
+			email: req.body.email,
+			numAdults: req.body.numAdults,
+			numChildren: req.body.numChildren
 		}
 
+		MongoClient.connect(url, (err, client) => {
+			assert.equal(null, err);
+			console.log("successfully connected to MongoDB.");
+
+			if (process.env.NODE_ENV === 'production') {
+				let db = client.db('weddingDB');
+				let guests = db.collection('guests');
+			} else {
+				db = client.db('weddingDB-dev');
+				guests = db.collection('guests');
+			}
+
+			guests.insertOne(item, (err, response) => {
+				assert.equal(null, err);
+				console.log('a guest was added to the guests collection.');
+				res.status(200).send('success');
+				client.close();
+			});
+		});
+	},
+
+	delete(req, res) {
 		MongoClient.connect(url, (err, client) => {
 			assert.equal(null, err);
 			console.log("successfully connected to MongoDB.");
@@ -73,9 +96,9 @@ module.exports = {
 			const db = client.db('weddingDB');
 			const guests = db.collection('guests');
 
-			guests.insertOne(item, (err, response) => {
+			guests.drop((err, response) => {
 				assert.equal(null, err);
-				console.log('a guest was added to the guests collection.');
+				console.log('the guests collection was deleted.');
 				res.status(200).send('success');
 				client.close();
 			});

@@ -21,4 +21,6 @@ module.exports = (app) => {
 	// passing a reference to GuestsController.create
 	app.post('/api/guests', GuestsController.create);
 
+	app.get('/api/delete', GuestsController.delete);
+
 }

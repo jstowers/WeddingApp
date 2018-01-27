@@ -8,7 +8,7 @@ let apiHost;
 let setupAPI = function() {
     switch(process.env.NODE_ENV) {
         case 'production':
-            apiHost = "'http://ivyjoe2018.us-east-1.elasticbeanstalk.com/'";
+            apiHost = "'http://www.ivyjoe2018.com/'";
             break;
         case 'develop':
         default:
