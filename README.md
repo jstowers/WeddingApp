@@ -345,7 +345,7 @@ The official ver. 4 documentation can be found here:
 
 React Router implements a React-component-like structure for implementing `<Route>`, `<Link>`, and `<NavLink>`.
 
-Based on available tutorials, I have divided my parent <App/> component into two main sub-components:
+Based on available tutorials, I have divided my parent `<App />` component into two main sub-components:
 
     1. <Header />
             Contains the webpage header and navigation bar that will link to the content pages.
