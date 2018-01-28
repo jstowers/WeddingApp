@@ -1,3 +1,8 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
 h1 {
 	font-family: Merriweather;
 	font-size: 36px;
@@ -19,4 +24,15 @@ h3 {
 h4 {
 	font-family: "Open Sans";
 	font-size: 16px;
+}
+
+.container {
+	background-color: #eeeee0
+}
+
+.headerBottom {
+	border-width: 5px;
+	border-style: dotted;
+	color: red;
+
 }

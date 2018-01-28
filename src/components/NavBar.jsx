@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import headerStyle from '../../style/01-main.css';
-import { Nav, NavItem } from 'react-bootstrap;'
+import { Nav, NavItem } from 'react-bootstrap';
 
 class NavBar extends Component {
 
@@ -8,13 +9,13 @@ class NavBar extends Component {
 		return (
 			<Nav bsStyle="tabs" justified activeKey={1}>
 				<NavItem eventKey={1}>
-					Home
+					<Link to='/'>Home</Link>
 				</NavItem>
 				<NavItem eventKey={2}>
 					Our Story
 				</NavItem>
 				<NavItem eventKey={3}>
-					RSVP
+					<Link to='/RSVP'>RSVPForm</Link>
 				</NavItem>
 				<NavItem eventKey={4}>
 					Your Stay
@@ -29,3 +30,5 @@ class NavBar extends Component {
 		);
 	}
 }
+
+export default NavBar;

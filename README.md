@@ -2,7 +2,7 @@
 An interactive, dynamic wedding app built with React, Node, Express, and MongoDB (MERN).
 
 ## Run App in Development Mode  
-To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow these steps.
+To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow these two steps:
 
 1.  Build the webpack module in development mode:
 ````
@@ -20,9 +20,9 @@ To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow
 ## Run App on Your Local Machine
 To run the app entirely on your local machine, you will need to spin-up three servers:
 
-    -- Server 1, running on port 8080, will serve the content of the app in the browser.
-    -- Server 2, running on port 3050, will connect the front-end browser to the back-end Mongo database via an Express server.
-    -- Server 3, running on port 27017, will run the mongod process that serve the content from the Mongo database.
+    - Server 1, running on port 8080, will serve the content of the app in the browser.
+    - Server 2, running on port 3050, will connect the front-end browser to the back-end Mongo database via an Express server.
+    - Server 3, running on port 27017, will run the mongod process that serve the content from the Mongo database.
 
 1.  To start the frontend client server on port 8080, open a new tab in the console, change to the WeddingApp root directory, and run:
     ````
