@@ -64,7 +64,8 @@ module.exports = {
 			name: req.body.name,
 			email: req.body.email,
 			numAdults: req.body.numAdults,
-			numChildren: req.body.numChildren
+			numChildren: req.body.numChildren,
+			songRequest: req.body.songRequest
 		}
 
 		MongoClient.connect(url, (err, client) => {

@@ -11,7 +11,6 @@ import { Form,
 		 Button,
 		 Table } from 'react-bootstrap';
 import formStyle from '../../style/01-main.css';
-import RSVPConfirm from './RSVPConfirm';
 
 class RSVPForm extends Component {
 
@@ -54,8 +53,16 @@ class RSVPForm extends Component {
 
 	onFormSubmit = () => {
 
-		let newGuestPath = 'api/guests';
-		let url = this.hostUrl + newGuestPath;
+		this.toggleModal();
+
+
+	
+	}
+
+	onRSVPConfirm = () => {
+
+		let addGuestPath = 'api/addGuest';
+		let url = this.hostUrl + addGuestPath;
 
 		let body = {
 			'name': this.state.name,
@@ -63,11 +70,8 @@ class RSVPForm extends Component {
 			'numAdults': this.state.numAdults,
 			'numChildren': this.state.numChildren,
 			'songRequest': this.state.songRequest
-		}
+		};
 
-		this.toggleModal();
-
-		/*
 		console.log('onSubmit body =', body);
 
 		axios.post(url, body)
@@ -76,9 +80,7 @@ class RSVPForm extends Component {
 		})
 		.catch(err => {
 			console.log('err =', err);
-		})
-		*/
-	
+		});
 	}
 
 	modalBody = () => {
@@ -189,8 +191,10 @@ class RSVPForm extends Component {
 				    	{this.modalBody()}
 			    	</Modal.Body>
 				    <Modal.Footer>
-				      <Button onClick={this.toggleModal}>Go Back</Button>
-				      <Button bsStyle="primary">Confirm RSVP</Button>
+				      <Button onClick={ this.toggleModal }>Go Back</Button>
+				      <Button bsStyle="primary"
+				      		  onClick={ this.onRSVPConfirm }>Confirm RSVP
+				      </Button>
 				    </Modal.Footer>
 			  	</Modal>
 			</div>

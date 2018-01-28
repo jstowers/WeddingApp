@@ -7,7 +7,7 @@
         "build": "webpack",
         "start": "node app.js",
         "test": "nodemon --exec 'mocha --recursive -R min'",
-        "serve": "webpack-dev-server",
+        "serve": "NODE_ENV=develop webpack-dev-server",
         "build:dev": "NODE_ENV=develop npm run build",
         "build:production": "NODE_ENV=production npm run build"
     },
@@ -39,6 +39,7 @@
         "react-bootstrap": "^0.32.0",
         "react-dom": "^16.2.0",
         "react-redux": "^5.0.6",
+        "react-router-dom": "^4.2.2",
         "redux": "^3.7.2",
         "supertest": "^3.0.0"
     },

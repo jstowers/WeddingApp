@@ -10,7 +10,7 @@ class Header extends Component {
 				<h2>April 28, 2018</h2>
 				<h3>Albuquerque, New Mexico</h3>
 			</div>
-		)
+		);
 	}
 }
 

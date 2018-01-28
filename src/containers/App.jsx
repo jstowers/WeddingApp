@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import Header from '../components/Header';
-import RSVPForm from '../components/RSVPForm';
+import Main from './Main';
 
 class App extends Component {
 
-  	render() {
-	    return (
-	      	<div>
-	      		<Header />
-	      		<RSVPForm />
-  			</div>
-	    );
+	render() {
+    	return (
+      		<div>
+      			<Header />
+            	<Main />
+  	  		</div>
+    	);
   	}
 }
 

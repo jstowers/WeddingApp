@@ -19,7 +19,7 @@ module.exports = (app) => {
 
 	// Handles POST request to MongoDB to add a guest
 	// passing a reference to GuestsController.create
-	app.post('/api/guests', GuestsController.create);
+	app.post('/api/addGuest', GuestsController.create);
 
 	app.get('/api/delete', GuestsController.delete);
 

@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
+import { BrowserRouter } from 'react-router-dom';
+import App from '../src/containers/App';
 
-/* Save if need to add Redux:
+/* 
+// Use if add Redux:
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 */
 
-ReactDOM.render(<App/>, document.querySelector('.container'));
+ReactDOM.render((
+	<BrowserRouter>
+		<App />
+	</BrowserRouter>
+), document.querySelector('.container'));
 
-/* Save if need to add Redux:
+/* 
+// Use if add Redux:
 <Provider store={createStoreWithMiddleware(reducers)}></Provider>
 */
