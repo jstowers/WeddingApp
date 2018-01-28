@@ -72,9 +72,12 @@ module.exports = {
 			assert.equal(null, err);
 			console.log("successfully connected to MongoDB.");
 
+			const db, guests;
+
 			if (process.env.NODE_ENV === 'production') {
-				let db = client.db('weddingDB');
-				let guests = db.collection('guests');
+				console.log('in IF statement for process.env.NODE_ENV = production');
+				db = client.db('weddingDB');
+				guests = db.collection('guests');
 			} else {
 				db = client.db('weddingDB-dev');
 				guests = db.collection('guests');

@@ -17,6 +17,26 @@ To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow
 3.  Any database calls will be made to the MongoDB Atlas cluster.
 
 
+## Build App for Production Deployment
+The app is currently deployed on an AWS Elastic Beanstalk cluster.  The MongoDB database is served on a separate AWS EC2 instance and configured through MongoDB Atlas.
+
+1.  Build the webpack module for production:
+````
+        $ npm run build:production
+````
+
+2.  After the build, go to the Finder window and navigate to the app directory.
+
+3.  Open the root directory and compress all the files into a ZIP file.
+
+4.  Move the compressed file to the WeddingApp-Build folder.
+
+5.  In the browser, login into AWS and navigate to Elastic Beanstalk and the current app deployment.
+
+6.  Click the _Upload and Deploy_ button.  Select the compressed folder from the WeddingApp-Build folder.
+
+7.  The upload and deployment process on Elastic Beanstalk takes about 5-7 minutes.
+
 ## Run App on Your Local Machine
 To run the app entirely on your local machine, you will need to spin-up three servers:
 
@@ -319,6 +339,13 @@ So, this morning, based on Stephen Grider's Webpack lecture (Sec. 9, Lec. 52, 7:
 
 // CORS Configuration on AWS S3
 
+1. In AWS, go to the AWS S3 service
+
+2.  Select the elasticbeanstalk bucket for this app
+
+3.  Click on the Permissions tab, then the CORS Configuration
+
+4.  It will bring up an editor to configure the CORS policy for this bucket.  A sample CORSConfiguration follows:
 ````
     <!-- Sample policy -->
     <CORSConfiguration>
@@ -355,4 +382,46 @@ Based on available tutorials, I have divided my parent `<App />` component into 
 
 This morning, I am still working out the details of this new method.  
 
+_9:54 am_
 
+I just completed the basic React Router setup for the 6 pages.  The next step is to see how the routing behaves on the deployed app.
+
+Mi princesa Ivy esta todavía durmiendo . . . y yo, trabajando como un perro, mis manos encadenado al compu!
+
+I just deployed to AWS production build WeddingApp-ver19!  ¡Vamos a ver!
+
+
+_10:10 am_
+
+I just tested WeddingApp-ver19 and received the following error when I tried to submit my RSVP confirmation.  
+````
+    Failed to load http://www.ivyjoe2018.com/api/addGuest: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://ivyjoe2018.us-east-1.elasticbeanstalk.com' is therefore not allowed access.
+````
+I believe this error is caused by the RSVPForm endpoint being www.ivyjoe2018.com/RSVP/api/addGuest and not www.ivyjoe2018.com/api/addGuest
+
+I changed the AWS CORSConfiguration below and will see if this works:
+
+````
+    <?xml version="1.0" encoding="UTF-8"?>
+    <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+    <CORSRule>
+        <AllowedOrigin>http://www.ivyjoe2018.com</AllowedOrigin>
+        <AllowedMethod>PUT</AllowedMethod>
+        <AllowedMethod>POST</AllowedMethod>
+        <AllowedMethod>DELETE</AllowedMethod>
+        <MaxAgeSeconds>3000</MaxAgeSeconds>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+    <CORSRule>
+        <AllowedOrigin>http://www.ivyjoe2018.com/RSVP</AllowedOrigin>
+        <AllowedMethod>POST</AllowedMethod>
+        <MaxAgeSeconds>3000</MaxAgeSeconds>
+        <AllowedHeader>*</AllowedHeader>
+    </CORSRule>
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+    </CORSRule>
+    </CORSConfiguration>
+
+I may have to change some routing in the Express app as well.

@@ -55,14 +55,13 @@ class RSVPForm extends Component {
 
 		this.toggleModal();
 
-
-	
 	}
 
 	onRSVPConfirm = () => {
 
 		let addGuestPath = 'api/addGuest';
 		let url = this.hostUrl + addGuestPath;
+		console.log('RSVPConfirm url =', url);
 
 		let body = {
 			'name': this.state.name,
@@ -72,7 +71,7 @@ class RSVPForm extends Component {
 			'songRequest': this.state.songRequest
 		};
 
-		console.log('onSubmit body =', body);
+		console.log('onRSVPConfirm body =', body);
 
 		axios.post(url, body)
 		.then(res => {
