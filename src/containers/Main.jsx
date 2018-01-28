@@ -4,13 +4,15 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Home from '../components/Home';
+import RSVPForm from '../components/Form';
 
 
 // Main implements the new React Router v.4
 const Main = () => (
 
 	<Switch>
-		<Route path ='/' component = { Home } />
+		<Route path exact ='/' component = { Home } />
+		<Route path ='/RSVP' component = { RSVPForm } />
 	</Switch>
 
 );
