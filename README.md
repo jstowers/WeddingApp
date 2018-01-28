@@ -1,7 +1,29 @@
 # WeddingApp
 An interactive, dynamic wedding app built with React, Node, Express, and MongoDB (MERN).
 
-## Run the App on Your Local Machine
+## Run App in Development Mode  
+To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow these steps.
+
+1.  Build the webpack module in development mode:
+````
+        $ npm run build:dev
+````
+
+2.  Start the local server:
+````
+        $ npm start
+````
+
+3.  Any database calls will be made to the MongoDB Atlas cluster.
+
+
+## Run App on Your Local Machine
+To run the app entirely on your local machine, you will need to spin-up three servers:
+
+    -- Server 1, running on port 8080, will serve the content of the app in the browser.
+    -- Server 2, running on port 3050, will connect the front-end browser to the back-end Mongo database via an Express server.
+    -- Server 3, running on port 27017, will run the mongod process that serve the content from the Mongo database.
+
 1.  To start the frontend client server on port 8080, open a new tab in the console, change to the WeddingApp root directory, and run:
     ````
         $ npm run serve
@@ -17,20 +39,21 @@ An interactive, dynamic wedding app built with React, Node, Express, and MongoDB
         $ node app.js
     ````
 
-4.  To start the mongod process on your local machine, open a new tab in the console and run the following command:
+4.  To start the mongod process on port 27017, open a new tab in the console and run the following command:
     ````
         $ mongod
     ````
 
 mongod is the main background process (daemon) that handles data requests, manages data access, and performs background management operations for the Mongo database.
 
-5.  To shut down the mongod process, from the mongodb shell:
+5.  To shut down the mongod process, in a new tab in the console, open a mongodb shell and then run the following two commands:
     ````
+        $ mongodb
         > use admin
         > db.shutdownServer()
     ````
 
-If mongod errors and says the socket/address for port 27017 is already in use, you can kill the previous mongod process with two unix commands:
+The above commands should kill the mongod process.  If mongod errors and says the socket/address for port 27017 is already in use, you can kill the previous mongod process with two unix commands:
 
     ````
         $ ps wuax | grep mongo
@@ -42,7 +65,7 @@ The output will show a couple of lines of code like this:
         jstowers  2408   0.3  0.1  2584216 9988 ??  S  Mon03PM 2:04.14 mongod
     ````
 
-Kill the instance of mongod that is running:
+Next, kill the instance of mongod that is running:
 
     ```` 
         $ kill 2408
