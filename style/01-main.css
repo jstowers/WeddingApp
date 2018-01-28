@@ -1,6 +1,7 @@
 html, body {
 	margin: 0;
 	padding: 0;
+	background-color: #eeeee0
 }
 
 h1 {
@@ -27,7 +28,7 @@ h4 {
 }
 
 .container {
-	background-color: #eeeee0
+
 }
 
 .headerBottom {

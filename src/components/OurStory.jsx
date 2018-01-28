@@ -1,18 +1,18 @@
 // January 27, 2018
-// Homepage
+// Our Story
 
 import React, { Component } from 'react';
 import headerStyle from '../../style/01-main.css';
 
-class Home extends Component {
+class OurStory extends Component {
 
 	render() {
 		return (
 			<div>
-				<h3>You made it!</h3>
+				<h3>Once upon a time . . .</h3>
 			</div>
 		);
 	}
 }
 
-export default Home;
+export default OurStory;
