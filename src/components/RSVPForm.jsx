@@ -10,7 +10,7 @@ import { Form,
 		 ButtonGroup,
 		 Button,
 		 Table } from 'react-bootstrap';
-import formStyle from '../../style/01-main.css';
+import formStyle from '../../style/02-RSVPForm.css';
 
 class RSVPForm extends Component {
 

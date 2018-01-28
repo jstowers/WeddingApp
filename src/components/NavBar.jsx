@@ -33,13 +33,13 @@ class NavBar extends Component {
 					<Link to='/RSVP'>RSVPForm</Link>
 				</NavItem>
 				<NavItem eventKey={4}>
-					Your Stay
+					<Link to='/YourStay'>Your Stay</Link>
 				</NavItem>
 				<NavItem eventKey={5}>
-					To Do
+					<Link to='ToDo'>To Do</Link>
 				</NavItem>
 				<NavItem eventKey={6}>
-					Restaurants
+					<Link to='Restaurants'>Restaurants</Link>
 				</NavItem>
 			</Nav>
 		);
