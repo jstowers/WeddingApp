@@ -337,6 +337,8 @@ _8:27 am_
 
 I spent the majority of Saturday working on routing my static React components using the new React Router ver. 4.  I had hoped to use an older routing method from an earlier project, but alas, no.
 
+The official ver. 4 documentation can be found here:
+
 ````
     https://reacttraining.com/react-router/web/api/
 ````
@@ -349,8 +351,8 @@ Based on available tutorials, I have divided my parent <App/> component into two
             Contains the webpage header and navigation bar that will link to the content pages.
 
     2. <Main />
-            Implements a `<Switch>` component to route the user to the different content pages.
+            Implements a <Switch> component to route the user to the different content pages.
 
-I am still working out the details of this new method.  
+This morning, I am still working out the details of this new method.  
 
 
