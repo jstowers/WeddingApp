@@ -261,14 +261,15 @@ Working on deployment to AWS Elastic Beanstalk
             ]
         }
     ````
-    The template property means that this plugin will look to the index.html file saved in the src directory for guidance on creating the index.html file in the build directory.
+    For this plugin, the _template_ property will look to the _index.html_ file saved in the #src/# directory for guidance in creating the _index.html_ file that will be inserted in the #build/# directory.
 
     _4:15pm_
+
     I have encountered problems deploying the app to AWS.  
 
     The app builds with npm run build and creates the bundle.js and index.html file in the build folder.  When I start the local Express server, the React component renders fine.  But when I zip the files and deploy to AWS, the webpage gives an error for the ReactDOM render in index.js.
 
-### Sunday, January 21, 2019
+### Sunday, January 21, 2018
     _12:19am_
 
     Updated app.js to include an IF statement to apply the webpack middleware when NODE_ENV !== 'production'
@@ -330,5 +331,26 @@ So, this morning, based on Stephen Grider's Webpack lecture (Sec. 9, Lec. 52, 7:
     </CORSConfiguration>
 ````
 
+### Sunday, January 28, 2018
+
+_8:27 am_
+
+I spent the majority of Saturday working on routing my static React components using the new React Router ver. 4.  I had hoped to use the routing method from an earlier project using a previous version, but no.
+
+````
+    https://reacttraining.com/react-router/web/api/
+````
+
+React Router implements a React-component-like structure for implementing <Route>, <Link>, and <NavLink>.
+
+Based on available tutorials, I have divided my parent <App/> component into two main sub-components:
+
+    1. <Header />
+            This component will contain the webpage header and navigation bar that will link to the content pages.
+
+    2. <Main />
+            This component will implement a <Switch> component to route the user to the different content pages.
+
+I am still working out the details of this new method.  
 
 
