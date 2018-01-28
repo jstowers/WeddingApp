@@ -335,21 +335,21 @@ So, this morning, based on Stephen Grider's Webpack lecture (Sec. 9, Lec. 52, 7:
 
 _8:27 am_
 
-I spent the majority of Saturday working on routing my static React components using the new React Router ver. 4.  I had hoped to use the routing method from an earlier project using a previous version, but no.
+I spent the majority of Saturday working on routing my static React components using the new React Router ver. 4.  I had hoped to use an older routing method from an earlier project, but alas, no.
 
 ````
     https://reacttraining.com/react-router/web/api/
 ````
 
-React Router implements a React-component-like structure for implementing <Route>, <Link>, and <NavLink>.
+React Router implements a React-component-like structure for implementing `<Route>`, `<Link>`, and `<NavLink>`.
 
 Based on available tutorials, I have divided my parent <App/> component into two main sub-components:
 
     1. <Header />
-            This component will contain the webpage header and navigation bar that will link to the content pages.
+            Contains the webpage header and navigation bar that will link to the content pages.
 
     2. <Main />
-            This component will implement a <Switch> component to route the user to the different content pages.
+            Implements a `<Switch>` component to route the user to the different content pages.
 
 I am still working out the details of this new method.  
 
