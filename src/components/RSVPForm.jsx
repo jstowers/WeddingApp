@@ -120,10 +120,20 @@ class RSVPForm extends Component {
 		    	</Modal.Body>
 			    <Modal.Footer>
 			      	<Button>
-			      		<Link to='/'>Close</Link>
+						<Link to='/'>Close</Link>
 		      		</Button>
 			    </Modal.Footer>
 			 </Modal>
+		)
+	}
+
+	linkToHome = () => {
+		console.log('INSIDE linkToHome');
+		return (
+			<div>
+				<Link to='/'>Close</Link>
+			</div>
+			
 		)
 	}
 
@@ -135,7 +145,7 @@ class RSVPForm extends Component {
 					<b>{this.state.name},</b>
 				</h2>
 				<h4>
-					Your presence is an honor to our familes!
+					Your presence is an honor to our families!
 					<br />
 					<br />
 				</h4>
