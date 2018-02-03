@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Promise from 'es6-promise-promise';
 import axios from 'axios';
 import { Form,
 		 Col,

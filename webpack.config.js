@@ -77,6 +77,9 @@ const config = {
         }),
         new webpack.DefinePlugin({
             __API__: apiHost
+        }),
+        new webpack.ProvidePlugin({
+            Promise: 'es6-promise-promise'
         })
     ]
 }

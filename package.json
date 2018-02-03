@@ -31,7 +31,9 @@
     "homepage": "https://github.com/jstowers/WeddingApp#readme",
     "dependencies": {
         "axios": "^0.17.1",
+        "babel-polyfill": "^6.26.0",
         "body-parser": "^1.18.2",
+        "es6-promise-promise": "^1.0.0",
         "express": "^4.16.2",
         "mocha": "^4.1.0",
         "mongodb": "^3.0.1",
