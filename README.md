@@ -485,8 +485,7 @@ There could be an issue accessing a separate production database with the NODE_E
 ````
 
 A sample Postman request:
-
-````
+```
     { 
       "name": "Jose Jose",
       "email": "jose@rca.com",
@@ -494,7 +493,7 @@ A sample Postman request:
       "numChildren": "4",
       "songRequest": "El Triste"
     }
-````
+```
 
 ### Friday, February 2, 2018
 
@@ -502,5 +501,43 @@ To Do
 1.  Create modal to close RSVP Form and Link to homepage
 2.  Create static content for Stay, Restaurants, To Do
 3.  Cleanup styling
-4.  
+
+_RSVP Modal Close and Link to Home_
+Added another modal that pops-up when a successful response is 
+returned from MongoDB.
+
+When the user clicks Close, the page is Linked via React Router to /Home.
+
+The database calls worked fine on Chrome, Safari, and Ivy's cell.  The POST call did not work on Internet Explorer 11 ("IE11").  The term 'Promise' was undefined and returned a SCRIPT5009 error code in the console.
+
+After research, I installed the 'es6-promise-promise' library which expands the ES6 Promise.  I then added it as a webpack.ProvidePlugin in my webpack.config file:
+
+```
+    new webpack.ProvidePlugin({
+        Promise: 'es6-promise-promise'
+    })
+```
+
+This fixed the Promise problem in IE11.  To test, hit F12 and in the console, type the following:
+
+```
+    > window.Promise
+```
+It should return a result referencing a Promise resolver.
+
+---
+
+_React Router `<Link>` Did Not Work in IE11_
+
+Loaded babel-polyfill as a Node dependency.
+
+Added import statement for babel-polyfill as first line in index.js file:
+
+```
+    import 'babel-polyfill';
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+    import { BrowserRouter } from 'react-router-dom';
+    import App from '../src/containers/App';
+```
 

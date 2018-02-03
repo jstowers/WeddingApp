@@ -17,15 +17,40 @@ class NavBar extends Component {
 				'4': '',
 				'5': '',
 				'6': ''
-			}
+			},
+			fromRSVP: false
 		}
 		
 	}
 
+	/*
+	shouldComponentUpdate(nextProps, nextState) {
+		console.log('inside shouldComponentUpdate')
+		console.log(nextProps);
+	}
+	*/
+
+	/*
+	componentWillReceiveProps = () => {
+
+		console.log('this.props =', this.props);
+		console.log('this.state =', this.state);
+
+		if (this.props.location) {
+
+			let receivedMessage = this.props.location.state.fromRSVP;
+			console.log('receivedMessage =', receivedMessage);
+		}
+		
+
+		//this.handleSelect(receivedMessage);
+	} 
+	*/
+	
 	// changes the selected tab from inactive to active
 	handleSelect = (selectedKey) => {
 	
-		console.log('typeof(selectedKey) =', typeof(selectedKey));
+		console.log('selectedKey =', selectedKey);
 
 		let tabs = this.state.tabs;
 
@@ -38,7 +63,6 @@ class NavBar extends Component {
 		}
 
 		this.setState({ tabs:tabs });
-
 	}
 
 	render() {

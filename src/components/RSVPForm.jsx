@@ -11,8 +11,9 @@ import { Form,
 		 ButtonGroup,
 		 Button,
 		 Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import formStyle from '../../style/02-RSVPForm.css';
+// import NavBar from './NavBar';
 
 class RSVPForm extends Component {
 
@@ -28,7 +29,8 @@ class RSVPForm extends Component {
 			songRequest:'',
 			despacito:'',
 			showModal:false,
-			confirmRSVP: false
+			confirmRSVP: false,
+			fromRSVP: true
 		}
 
 		this.baseState = this.state;
@@ -102,6 +104,25 @@ class RSVPForm extends Component {
 	}
 
 
+/*
+<Link to = {{
+						    pathname: '/',
+						    replace
+							state: { fromRSVP:true }
+						}}
+
+
+*/
+
+	checkEvent = (match, location) => {
+		console.log('location =', location);
+		console.log('match =', match);
+
+		return location.state  = {
+			fromRSVP: true
+		}
+	}
+
 	closeRSVP = () => {
 		console.log('INSIDE closeRSVP');
 		return (
@@ -120,23 +141,13 @@ class RSVPForm extends Component {
 		    	</Modal.Body>
 			    <Modal.Footer>
 			      	<Button>
-						<Link to='/'>Close</Link>
+			      		<Link to='/Home'
+						>Close</Link>
 		      		</Button>
 			    </Modal.Footer>
 			 </Modal>
 		)
 	}
-
-	linkToHome = () => {
-		console.log('INSIDE linkToHome');
-		return (
-			<div>
-				<Link to='/'>Close</Link>
-			</div>
-			
-		)
-	}
-
 
 	modalBody = () => {
 		return (
@@ -169,8 +180,6 @@ class RSVPForm extends Component {
 			</div>
 		)
 	}
-
-
 
 	render() {
 

@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import OurStory from '../components/OurStory';
 import RSVPForm from '../components/RSVPForm';
@@ -15,6 +16,7 @@ import Restaurants from '../components/Restaurants';
 const Main = () => (
 	<Switch>
 		<Route exact={true} path ='/' component = { Home } />
+		<Route path ='/Home' component = { Home } />
 		<Route path ='/OurStory' component = { OurStory } />
 		<Route path ='/RSVP' component = { RSVPForm } />
 		<Route path ='/YourStay' component = { YourStay } />
