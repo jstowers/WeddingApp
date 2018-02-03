@@ -30,7 +30,7 @@ class NavBar extends Component {
 					<Link to='/OurStory'>Our Story</Link>
 				</NavItem>
 				<NavItem eventKey={3}>
-					<Link to='/RSVP'>RSVPForm</Link>
+					<Link to='/RSVP'>RSVP</Link>
 				</NavItem>
 				<NavItem eventKey={4}>
 					<Link to='/YourStay'>Your Stay</Link>

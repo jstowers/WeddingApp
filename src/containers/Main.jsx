@@ -14,7 +14,7 @@ import Restaurants from '../components/Restaurants';
 // Official documentation: https://reacttraining.com/react-router/web/api/
 const Main = () => (
 	<Switch>
-		<Route exact path ='/' component = { Home } />
+		<Route exact={true} path ='/' component = { Home } />
 		<Route path ='/OurStory' component = { OurStory } />
 		<Route path ='/RSVP' component = { RSVPForm } />
 		<Route path ='/YourStay' component = { YourStay } />

@@ -10,6 +10,7 @@ import { Form,
 		 ButtonGroup,
 		 Button,
 		 Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import formStyle from '../../style/02-RSVPForm.css';
 
 class RSVPForm extends Component {
@@ -25,7 +26,8 @@ class RSVPForm extends Component {
 			numChildren:0,
 			songRequest:'',
 			despacito:'',
-			showModal:false
+			showModal:false,
+			confirmRSVP: false
 		}
 
 		this.baseState = this.state;
@@ -75,12 +77,40 @@ class RSVPForm extends Component {
 
 		axios.post(url, body)
 		.then(res => {
-			console.log('res =', res);	
+			console.log('res =', res);
+			this.setState({ confirmRSVP:true });
 		})
 		.catch(err => {
 			console.log('err =', err);
 		});
 	}
+
+	linkToHome = () => {
+		return (
+			<Link to='/'></Link>
+		);
+	}
+
+	closeRSVP = () => {
+		console.log('INSIDE closeRSVP');
+		return (
+			<Modal show={this.state.showModal} onHide={this.toggleModal}>
+			    <Modal.Header>
+		      		<h1>RSVP Confirmation</h1>
+		      		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
+			    </Modal.Header>
+			    <Modal.Body>
+			    	Success!! You're reservation is confirmed!
+		    	</Modal.Body>
+			    <Modal.Footer>
+			      	<Button>
+			      		<Link to='/'>Home</Link>
+		      		</Button>
+			    </Modal.Footer>
+			 </Modal>
+		)
+	}
+
 
 	modalBody = () => {
 		return (
@@ -115,89 +145,98 @@ class RSVPForm extends Component {
 	}
 
 	render() {
-		return (
-			<div className = { formStyle }>
-				<Form horizontal>
-					<FormGroup>
-						<ControlLabel>Name</ControlLabel>
-						<FormControl
-							 id="name" 
-							 type="text" 
-							 value={ this.state.name }
-							 placeholder="Name"
-							 onChange={ this.handleInputChange }
-						/>
-					</FormGroup>
-					<FormGroup>
-						<ControlLabel>Email</ControlLabel>
-						<FormControl
-							id="email"
-							type="email"
-							value={ this.state.email }
-							placeholder="Please add your email"
-							onChange={ this.handleInputChange }
-						/>
-					</FormGroup>
-					<FormGroup>
-						<ControlLabel>Number of Adults</ControlLabel>
-						<FormControl
-							id="numAdults"
-							type="number"
-							value={ this.state.numAdults }
-							placeholder="Number of adults in your party"
-							onChange={ this.handleInputChange }
-						/>
-					</FormGroup>
-					<FormGroup>
-						<ControlLabel>Number of Children (ages 5-12)</ControlLabel>
-						<FormControl
-							id="numChildren"
-							type="number"
-							value={ this.state.numChildren }
-							placeholder="Number of children in your party"
-							onChange={ this.handleInputChange }
-						/>
-					</FormGroup>
-					<FormGroup>
-						<ControlLabel>Song Request</ControlLabel>
-						<FormControl
-							 id="songRequest" 
-							 type="text" 
-							 value={ this.state.songRequest }
-							 placeholder="Enter your song request"
-							 onChange={ this.handleInputChange }
-						/>
-					</FormGroup>
-				</Form>
-				<ButtonToolbar>
-			        <Button 
-			        	bsStyle="danger"
-		        		style={{color: 'white', 'textDecoration':'none'}}
-		        		onClick= { this.onFormCancel }>Cancel
-        			</Button>
-					<Button 
-						type="submit"
-						bsStyle="primary"
-						onClick= { this.onFormSubmit }>Submit
-			        </Button>
-				</ButtonToolbar>
-				<Modal show={this.state.showModal} onHide={this.toggleModal}>
-				    <Modal.Header>
-			      		<h1>RSVP Confirmation</h1>
-			      		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
-				    </Modal.Header>
-				    <Modal.Body>
-				    	{this.modalBody()}
-			    	</Modal.Body>
-				    <Modal.Footer>
-				      <Button onClick={ this.toggleModal }>Go Back</Button>
-				      <Button bsStyle="primary"
-				      		  onClick={ this.onRSVPConfirm }>Confirm RSVP
-				      </Button>
-				    </Modal.Footer>
-			  	</Modal>
-			</div>
-		);
+
+		if (!this.state.confirmRSVP){
+			return (
+				<div className = { formStyle }>
+					<Form horizontal>
+						<FormGroup>
+							<ControlLabel>Name</ControlLabel>
+							<FormControl
+								 id="name" 
+								 type="text" 
+								 value={ this.state.name }
+								 placeholder="Name"
+								 onChange={ this.handleInputChange }
+							/>
+						</FormGroup>
+						<FormGroup>
+							<ControlLabel>Email</ControlLabel>
+							<FormControl
+								id="email"
+								type="email"
+								value={ this.state.email }
+								placeholder="Please add your email"
+								onChange={ this.handleInputChange }
+							/>
+						</FormGroup>
+						<FormGroup>
+							<ControlLabel>Number of Adults</ControlLabel>
+							<FormControl
+								id="numAdults"
+								type="number"
+								value={ this.state.numAdults }
+								placeholder="Number of adults in your party"
+								onChange={ this.handleInputChange }
+							/>
+						</FormGroup>
+						<FormGroup>
+							<ControlLabel>Number of Children (ages 5-12)</ControlLabel>
+							<FormControl
+								id="numChildren"
+								type="number"
+								value={ this.state.numChildren }
+								placeholder="Number of children in your party"
+								onChange={ this.handleInputChange }
+							/>
+						</FormGroup>
+						<FormGroup>
+							<ControlLabel>Song Request</ControlLabel>
+							<FormControl
+								 id="songRequest" 
+								 type="text" 
+								 value={ this.state.songRequest }
+								 placeholder="Enter your song request"
+								 onChange={ this.handleInputChange }
+							/>
+						</FormGroup>
+					</Form>
+					<ButtonToolbar>
+				        <Button 
+				        	bsStyle="danger"
+			        		style={{color: 'white', 'textDecoration':'none'}}
+			        		onClick= { this.onFormCancel }>Cancel
+	        			</Button>
+						<Button 
+							type="submit"
+							bsStyle="primary"
+							onClick= { this.onFormSubmit }>Submit
+				        </Button>
+					</ButtonToolbar>
+					<Modal show={this.state.showModal} onHide={this.toggleModal}>
+					    <Modal.Header>
+				      		<h1>RSVP Confirmation</h1>
+				      		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
+					    </Modal.Header>
+					    <Modal.Body>
+					    	{this.modalBody()}
+				    	</Modal.Body>
+					    <Modal.Footer>
+					      <Button onClick={ this.toggleModal }>Go Back</Button>
+					      <Button bsStyle="primary"
+					      		  onClick={ this.onRSVPConfirm }>Confirm RSVP
+					      </Button>
+					    </Modal.Footer>
+				  	</Modal>
+				</div>
+			);
+		} else {
+			return (
+				<div>
+					{ this.closeRSVP() }
+				</div>
+			);
+		}
 	}
 }
 

@@ -1,4 +1,4 @@
-// Sunday, January 14, 2018
+ // Sunday, January 14, 2018
 
 /*
 	PURPOSE: the request-handling logic for the MongoDB wedding database is contained here.
@@ -72,21 +72,26 @@ module.exports = {
 			assert.equal(null, err);
 			console.log("successfully connected to MongoDB.");
 
-			const db, guests;
+			let db = client.db('weddingDB');
+			let guests = db.collection('guests');
 
+			/* CODE FAILED with REACT ROUTER??
 			if (process.env.NODE_ENV === 'production') {
 				console.log('in IF statement for process.env.NODE_ENV = production');
-				db = client.db('weddingDB');
-				guests = db.collection('guests');
+				let db = client.db('weddingDB');
+				let guests = db.collection('guests');
 			} else {
+				console.log('inside the else statement');
 				db = client.db('weddingDB-dev');
 				guests = db.collection('guests');
 			}
+			*/
 
 			guests.insertOne(item, (err, response) => {
 				assert.equal(null, err);
+				// console.log('insertOne response =', response);
 				console.log('a guest was added to the guests collection.');
-				res.status(200).send('success');
+				res.status(200).send(response.ops);
 				client.close();
 			});
 		});

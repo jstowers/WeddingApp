@@ -390,6 +390,7 @@ Mi princesa Ivy esta todavía durmiendo . . . y yo, trabajando como un perro, mi
 
 I just deployed to AWS production build WeddingApp-ver19!  ¡Vamos a ver!
 
+---
 
 _10:10 am_
 
@@ -423,5 +424,83 @@ I changed the AWS CORSConfiguration below and will see if this works:
         <AllowedMethod>GET</AllowedMethod>
     </CORSRule>
     </CORSConfiguration>
+````
 
 I may have to change some routing in the Express app as well.
+
+_1:48 pm_
+
+The AWS Node Express server was listening on port 8081.
+An RSVP request body was received at the create endpoint.
+The database connection was established.
+But the collection 'guests' was not defined for in the guests controller.
+
+This is the error from the AWS /var/log/nodejs/nodejs.log:
+
+````
+    Server is listening on port 8081
+    create req.body = { name: 'asdf',
+      email: 'asdf',
+      numAdults: '2',
+      numChildren: '2',
+      songRequest: 'asdf' }
+    successfully connected to MongoDB.
+    /var/app/current/node_modules/mongodb/lib/mongo_client.js:810
+    throw err; ^
+    ReferenceError: guests is not defined
+        at MongoClient.connect (/var/app/current/controllers/guests_controller.js:83:4)
+        at args.push (/var/app/current/node_modules/mongodb/lib/utils.js:404:72)
+        at /var/app/current/node_modules/mongodb/lib/mongo_client.js:255:5
+        at connectCallback (/var/app/current/node_modules/mongodb/lib/mongo_client.js:933:5)
+        at /var/app/current/node_modules/mongodb/lib/mongo_client.js:807:13
+        at _combinedTickCallback (internal/process/next_tick.js:131:7)
+        at process._tickCallback (internal/process/next_tick.js:180:9)
+````
+
+I had not received this error before when making a POST request from the development build.  It may be due to React Router's interaction with Express.
+---
+### WeddingApp-ver23
+_2:25 pm_
+
+I changed `guests_controller` to define only one database instead of one database for development and one for production.  I am trying to isolate and identify why MongoDB did not recognize the _guests_ collection when the app was deployed to production with the addition of React Router.  
+
+There could be an issue accessing a separate production database with the NODE_ENV variable.
+
+````
+        MongoClient.connect(url, (err, client) => {
+            assert.equal(null, err);
+            console.log("successfully connected to MongoDB.");
+
+            let db = client.db('weddingDB');
+            let guests = db.collection('guests');
+
+            guests.insertOne(item, (err, response) => {
+                assert.equal(null, err);
+                console.log('insertOne response =', response);
+                console.log('a guest was added to the guests collection.');
+                res.status(200).send('success');
+                client.close();
+            });
+        });
+````
+
+A sample Postman request:
+
+````
+    { 
+      "name": "Jose Jose",
+      "email": "jose@rca.com",
+      "numAdults": "2",
+      "numChildren": "4",
+      "songRequest": "El Triste"
+    }
+````
+
+### Friday, February 2, 2018
+
+To Do
+1.  Create modal to close RSVP Form and Link to homepage
+2.  Create static content for Stay, Restaurants, To Do
+3.  Cleanup styling
+4.  
+
