@@ -11,8 +11,11 @@ const assert = require('assert');
 // localhost for mongod process
 // const url = 'mongodb://localhost:27017/';
 
+const password = process.env.MONGODB_PASSWORD;
+//const password = 'D2pl8wlTg3Cy78VC@ij2';
+
 // MongoDB Atlas ij2 Cluster - M10 Instance Size
-const url = 'mongodb://jstowers:D2pl8wlTg3Cy78VC@ij2-shard-00-00-'+
+const url = 'mongodb://jstowers:'+password+'-shard-00-00-'+
 	'zha7t.mongodb.net:27017,ij2-shard-00-01-'+
 	'zha7t.mongodb.net:27017,ij2-shard-00-02-'+
 	'zha7t.mongodb.net:27017/test?ssl=true&replicaSet=IJ2-shard-'+

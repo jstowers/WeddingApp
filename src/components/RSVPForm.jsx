@@ -85,11 +85,21 @@ class RSVPForm extends Component {
 		});
 	}
 
-	linkToHome = () => {
-		return (
-			<Link to='/'></Link>
-		);
+	// Used to Delete Database
+	onDelete = () => {
+		let deleteGuestsPath = 'api/delete';
+		let url = this.hostUrl + deleteGuestsPath;
+		console.log('onDelete url =', url);
+
+		axios.get(url)
+		.then(res => {
+			console.log('res =', res);
+		})
+		.catch(err => {
+			console.log('err =', err);
+		})
 	}
+
 
 	closeRSVP = () => {
 		console.log('INSIDE closeRSVP');
@@ -100,11 +110,16 @@ class RSVPForm extends Component {
 		      		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
 			    </Modal.Header>
 			    <Modal.Body>
-			    	Success!! You're reservation is confirmed!
+			    	<h3>
+				    	Success!
+				    	We have received your RSVP.
+				    	Bienvenidos a Albuquerque!
+				    	Nos veremos muy pronto!
+			    	</h3>
 		    	</Modal.Body>
 			    <Modal.Footer>
 			      	<Button>
-			      		<Link to='/'>Home</Link>
+			      		<Link to='/'>Close</Link>
 		      		</Button>
 			    </Modal.Footer>
 			 </Modal>
@@ -143,6 +158,8 @@ class RSVPForm extends Component {
 			</div>
 		)
 	}
+
+
 
 	render() {
 
@@ -228,6 +245,13 @@ class RSVPForm extends Component {
 					      </Button>
 					    </Modal.Footer>
 				  	</Modal>
+		  			<ButtonToolbar>
+				        <Button 
+							type="submit"
+							bsStyle="primary"
+							onClick= { this.onDelete }>Delete Guests Data
+				        </Button>
+					</ButtonToolbar>
 				</div>
 			);
 		} else {

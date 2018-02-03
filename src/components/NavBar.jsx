@@ -14,6 +14,7 @@ class NavBar extends Component {
 	}
 
 	handleSelect = (selectedKey) => {
+		console.log('selectedKey = ', selectedKey);
 		this.setState({ activeKey: selectedKey })
 	}
 
@@ -27,13 +28,13 @@ class NavBar extends Component {
 					<Link to='/'>Home</Link>
 				</NavItem>
 				<NavItem eventKey={2}>
-					<Link to='/OurStory'>Our Story</Link>
+					<Link to='OurStory'>Our Story</Link>
 				</NavItem>
 				<NavItem eventKey={3}>
-					<Link to='/RSVP'>RSVP</Link>
+					<Link to='RSVP'>RSVP</Link>
 				</NavItem>
 				<NavItem eventKey={4}>
-					<Link to='/YourStay'>Your Stay</Link>
+					<Link to='YourStay'>Your Stay</Link>
 				</NavItem>
 				<NavItem eventKey={5}>
 					<Link to='ToDo'>To Do</Link>
