@@ -1,0 +1,11 @@
+.headerTitle h1 {
+	color: rgb(64,224,208);
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+.headerTitle h3 {
+	color: black;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}

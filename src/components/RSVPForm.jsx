@@ -12,7 +12,7 @@ import { Form,
 		 Button,
 		 Table } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import formStyle from '../../style/02-RSVPForm.css';
+import formStyle from '../../style/05-rsvp.css';
 // import NavBar from './NavBar';
 
 class RSVPForm extends Component {
