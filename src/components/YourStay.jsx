@@ -6,28 +6,54 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import yourstayStyle from '../../style/06-yourstay.css';
 // import indexPhotos from '../../img/hotels/indexPhotos.js';
 import NativoLodge from './NativoLodge.jpg';
-
+const NativoLodge2 = require('./NativoLodge.jpg');
 
 const hotelsArray = [
 	{
 		name: 'Nativo Lodge',
-		img: { NativoLodge },
+		img: '/images/NativoLodge.jpg',
 		url: 'http://www.nativolodge.com/',
-		address1: '6000 Pan American Freeway, NE',
+		address1: '6000 Pan American Freeway NE',
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-798-4300',
 		distance: '6.0 miles'
 	},
 	{
-		name: 'Nativo Lodge',
+		name: 'Marriott Pyramid',
 		img: { NativoLodge },
-		url: 'http://www.nativolodge.com/',
-		address1: '6000 Pan American Freeway, NE',
+		url: 'http://bit.ly/19Swcb8',
+		address1: '5151 San Francisco Rd. NE',
 		address2: 'Albuquerque, NM 87109',
-		phone: '505-798-4300',
-		distance: '6.0 miles'
+		phone: '505-821-3333',
+		distance: '4.0 miles'
+	},
+	{
+		name: 'Courtyard Albuquerque',
+		img: { NativoLodge2 },
+		url: 'http://bit.ly/2GLve8H',
+		address1: '5151 Journal Center Blvd. NE',
+		address2: 'Albuquerque, NM 87109',
+		phone: '505-823-1919',
+		distance: '4.0 miles'
+	},
+	{
+		name: 'Staybridge Suites North',
+		img: './NativoLodge.jpg',
+		url: 'http://bit.ly/2BV9ELa',
+		address1: '5817 Signal Ave. NE',
+		address2: 'Albuquerque, NM 87113',
+		phone: '505-266-7829',
+		distance: '4.7 miles'
+	},
+	{
+		name: 'Sandia Resort & Casino',
+		img: './NativoLodge.jpg',
+		url: 'http://www.sandiacasino.com/hotel/',
+		address1: '30 Rainbow Rd. NE',
+		address2: 'Albuquerque, NM 87113',
+		phone: '505-796-7500',
+		distance: '6.3 miles'
 	}
-
 ]
 
 
@@ -37,18 +63,19 @@ const YourStay = () => {
 
 	const hotelItems = hotelsArray.map((hotel,index) => {
 		return (
-			<Row key={ index }>
+			<Row key={ index } className="rowDetail">
 				<Col xs={4} md={4} lg={4}>
-					<a href={ hotel.url } target="_blank">
-						<img
-						     src = { hotel.img }
-						     alt = { hotel.name } />
-				    </a>
+					<div className="photoDetail">
+						<a href={ hotel.url } target="_blank">
+							<img
+							     src = { hotel.img }
+							     alt = { hotel.name } />
+					    </a>
+				    </div>
 				</Col>
 				<Col xs={8} md={8} lg={8}>
 					<div className="hotelDetail">
 						<h2>{ hotel.name }</h2>
-						<h3>{ hotel.website }</h3>
 						<a href= { hotel.url } target="_blank" className="weblink">
 							{ hotel.url }
 						</a>
@@ -65,7 +92,7 @@ const YourStay = () => {
 
 	return (
 		<div className={ yourstayStyle }>
-			<Grid>
+			<Grid className = "gridContainer">
 				{ hotelItems }
 			</Grid>
 		</div>

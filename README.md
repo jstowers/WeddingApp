@@ -585,3 +585,23 @@ _11:14 am_
     }   
 ```
 
+## Loading Images with Webpack
+After much frustration, I found a workable solution around the difficulty in loading images with webpack.
+
+1.  I used a relative path for the images stored in the dist/images folder:
+```
+        img: '/images/NativoLodge.jpg'
+```
+    I could not get the _import_ statement to work relative to my src dev directory:
+```
+        import NativoLodge from './NativoLodge.jpg';
+```
+file-loader is supposed to take these import references and translate them to the webpack dist folder, but it's not working.
+
+2.  I removed the _publicPath=dist/_ reference in my file-loader config.
+
+3.  Webpack is having trouble reading images with import or require statements. 
+!! Solution => reference all images with the relative path /imags/<imageName> which will reference the images stored in the dist/images/ folder.
+
+4.  I tried to add publicPath = /dist'
+
