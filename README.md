@@ -346,17 +346,17 @@ So, this morning, based on Stephen Grider's Webpack lecture (Sec. 9, Lec. 52, 7:
 3.  Click on the Permissions tab, then the CORS Configuration
 
 4.  It will bring up an editor to configure the CORS policy for this bucket.  A sample CORSConfiguration follows:
-````
-    <!-- Sample policy -->
-    <CORSConfiguration>
-        <CORSRule>
-            <AllowedOrigin>*</AllowedOrigin>
-            <AllowedMethod>GET</AllowedMethod>
-            <MaxAgeSeconds>3000</MaxAgeSeconds>
-            <AllowedHeader>Authorization</AllowedHeader>
-        </CORSRule>
-    </CORSConfiguration>
-````
+```
+        <!-- Sample policy -->
+        <CORSConfiguration>
+            <CORSRule>
+                <AllowedOrigin>*</AllowedOrigin>
+                <AllowedMethod>GET</AllowedMethod>
+                <MaxAgeSeconds>3000</MaxAgeSeconds>
+                <AllowedHeader>Authorization</AllowedHeader>
+            </CORSRule>
+        </CORSConfiguration>
+```
 
 ### Sunday, January 28, 2018
 
@@ -395,36 +395,35 @@ I just deployed to AWS production build WeddingApp-ver19!  ¡Vamos a ver!
 _10:10 am_
 
 I just tested WeddingApp-ver19 and received the following error when I tried to submit my RSVP confirmation.  
-````
-    Failed to load http://www.ivyjoe2018.com/api/addGuest: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://ivyjoe2018.us-east-1.elasticbeanstalk.com' is therefore not allowed access.
-````
+```
+        Failed to load http://www.ivyjoe2018.com/api/addGuest: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://ivyjoe2018.us-east-1.elasticbeanstalk.com' is therefore not allowed access.
+```
 I believe this error is caused by the RSVPForm endpoint being www.ivyjoe2018.com/RSVP/api/addGuest and not www.ivyjoe2018.com/api/addGuest
 
 I changed the AWS CORSConfiguration below and will see if this works:
-
-````
-    <?xml version="1.0" encoding="UTF-8"?>
-    <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-    <CORSRule>
-        <AllowedOrigin>http://www.ivyjoe2018.com</AllowedOrigin>
-        <AllowedMethod>PUT</AllowedMethod>
-        <AllowedMethod>POST</AllowedMethod>
-        <AllowedMethod>DELETE</AllowedMethod>
-        <MaxAgeSeconds>3000</MaxAgeSeconds>
-        <AllowedHeader>*</AllowedHeader>
-    </CORSRule>
-    <CORSRule>
-        <AllowedOrigin>http://www.ivyjoe2018.com/RSVP</AllowedOrigin>
-        <AllowedMethod>POST</AllowedMethod>
-        <MaxAgeSeconds>3000</MaxAgeSeconds>
-        <AllowedHeader>*</AllowedHeader>
-    </CORSRule>
-    <CORSRule>
-        <AllowedOrigin>*</AllowedOrigin>
-        <AllowedMethod>GET</AllowedMethod>
-    </CORSRule>
-    </CORSConfiguration>
-````
+```
+        <?xml version="1.0" encoding="UTF-8"?>
+        <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+        <CORSRule>
+            <AllowedOrigin>http://www.ivyjoe2018.com</AllowedOrigin>
+            <AllowedMethod>PUT</AllowedMethod>
+            <AllowedMethod>POST</AllowedMethod>
+            <AllowedMethod>DELETE</AllowedMethod>
+            <MaxAgeSeconds>3000</MaxAgeSeconds>
+            <AllowedHeader>*</AllowedHeader>
+        </CORSRule>
+        <CORSRule>
+            <AllowedOrigin>http://www.ivyjoe2018.com/RSVP</AllowedOrigin>
+            <AllowedMethod>POST</AllowedMethod>
+            <MaxAgeSeconds>3000</MaxAgeSeconds>
+            <AllowedHeader>*</AllowedHeader>
+        </CORSRule>
+        <CORSRule>
+            <AllowedOrigin>*</AllowedOrigin>
+            <AllowedMethod>GET</AllowedMethod>
+        </CORSRule>
+        </CORSConfiguration>
+```
 
 I may have to change some routing in the Express app as well.
 
@@ -435,9 +434,9 @@ An RSVP request body was received at the create endpoint.
 The database connection was established.
 But the collection 'guests' was not defined for in the guests controller.
 
-This is the error from the AWS /var/log/nodejs/nodejs.log:
+This below error is from the AWS _/var/log/nodejs/nodejs.log_:
 
-````
+```
     Server is listening on port 8081
     create req.body = { name: 'asdf',
       email: 'asdf',
@@ -455,7 +454,7 @@ This is the error from the AWS /var/log/nodejs/nodejs.log:
         at /var/app/current/node_modules/mongodb/lib/mongo_client.js:807:13
         at _combinedTickCallback (internal/process/next_tick.js:131:7)
         at process._tickCallback (internal/process/next_tick.js:180:9)
-````
+```
 
 I had not received this error before when making a POST request from the development build.  It may be due to React Router's interaction with Express.
 ---
@@ -539,5 +538,50 @@ Added import statement for babel-polyfill as first line in index.js file:
     import ReactDOM from 'react-dom';
     import { BrowserRouter } from 'react-router-dom';
     import App from '../src/containers/App';
+```
+
+### Sunday, February 4, 2018
+
+Webpack is having a problem serving static files, like JPG photos, after the build process:
+```
+    https://github.com/webpack-contrib/css-loader/issues/585
+```
+
+Some of the things I've tried:
+
+1.  Run brew install libpng to load a different library
+
+2.  Change my webpack.config file to add a publicPath
+
+```
+    output: {
+        path: path.resolve(__dirname, 'build'),
+        filename: 'bundle.js',
+        publicPath: 'build/'
+    }
+```
+
+3.  Some error with file-loader, so downgrading to version 1.1.4
+
+Webpack is loading the image files as [Object][object]
+
+_11:14 am_
+
+### Installed Rimraf Package to Clean Previous _Build_ Directory
+-- Grider, Webpack, "Cleaning Project Files"
+-- Sec. 5, Lec. 39, 2:30
+-- Loaded npm package rimraf, which is a module for cleaning up directories in either Unix or Windows (a compatibility module).  This package will delete the previous build folder and all its contents before a new build:
+
+```
+    $  npm install --save-dev rimraf
+```
+
+-- Added and incorporated the following _clean_ script to the package.json file:
+```
+    "scripts": {
+        "clean": "rimraf build",
+        "build": "clean && webpack",
+        "build:dev": "NODE_ENV=develop npm run build"
+    }   
 ```
 

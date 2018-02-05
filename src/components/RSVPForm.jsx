@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// added for compatibility with Windows Internet Explorer ver. 11
 import Promise from 'es6-promise-promise';
 import axios from 'axios';
 import { Form,
@@ -13,7 +14,6 @@ import { Form,
 		 Table } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import formStyle from '../../style/05-rsvp.css';
-// import NavBar from './NavBar';
 
 class RSVPForm extends Component {
 
@@ -57,16 +57,14 @@ class RSVPForm extends Component {
 	}
 
 	onFormSubmit = () => {
-
 		this.toggleModal();
-
 	}
 
 	onRSVPConfirm = () => {
 
 		let addGuestPath = 'api/addGuest';
 		let url = this.hostUrl + addGuestPath;
-		console.log('RSVPConfirm url =', url);
+		// console.log('RSVPConfirm url =', url);
 
 		let body = {
 			'name': this.state.name,
@@ -76,7 +74,7 @@ class RSVPForm extends Component {
 			'songRequest': this.state.songRequest
 		};
 
-		console.log('onRSVPConfirm body =', body);
+		// console.log('onRSVPConfirm body =', body);
 
 		axios.post(url, body)
 		.then(res => {
@@ -88,35 +86,9 @@ class RSVPForm extends Component {
 		});
 	}
 
-	// Used to Delete Database
-	onDelete = () => {
-		let deleteGuestsPath = 'api/delete';
-		let url = this.hostUrl + deleteGuestsPath;
-		console.log('onDelete url =', url);
-
-		axios.get(url)
-		.then(res => {
-			console.log('res =', res);
-		})
-		.catch(err => {
-			console.log('err =', err);
-		})
-	}
-
-
-/*
-<Link to = {{
-						    pathname: '/',
-						    replace
-							state: { fromRSVP:true }
-						}}
-
-
-*/
-
 	checkEvent = (match, location) => {
-		console.log('location =', location);
-		console.log('match =', match);
+		// console.log('location =', location);
+		// console.log('match =', match);
 
 		return location.state  = {
 			fromRSVP: true
@@ -124,7 +96,7 @@ class RSVPForm extends Component {
 	}
 
 	closeRSVP = () => {
-		console.log('INSIDE closeRSVP');
+
 		return (
 			<Modal show={this.state.showModal} onHide={this.toggleModal}>
 			    <Modal.Header>
@@ -132,12 +104,14 @@ class RSVPForm extends Component {
 		      		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
 			    </Modal.Header>
 			    <Modal.Body>
-			    	<h3>
-				    	Success!
-				    	We have received your RSVP.
-				    	Bienvenidos a Albuquerque!
-				    	Nos veremos muy pronto!
-			    	</h3>
+			    	<div className="closeRSVP">
+				    	<h2>Success!</h2>
+				    	<h3>We have received your RSVP.</h3>
+			    	</div>
+			    	<div className="bienvenidos">
+			    		<h3>Bienvenidos a Albuquerque!</h3>
+				    	<h3>Nos veremos muy pronto!</h3>
+			    	</div>
 		    	</Modal.Body>
 			    <Modal.Footer>
 			      	<Button>
@@ -176,7 +150,6 @@ class RSVPForm extends Component {
 						</tr>
 					</tbody>
 				</Table>
-				<h3>Bienvenidos a Albuquerque!</h3>
 			</div>
 		)
 	}
@@ -265,13 +238,7 @@ class RSVPForm extends Component {
 					      </Button>
 					    </Modal.Footer>
 				  	</Modal>
-		  			<ButtonToolbar>
-				        <Button 
-							type="submit"
-							bsStyle="primary"
-							onClick= { this.onDelete }>Delete Guests Data
-				        </Button>
-					</ButtonToolbar>
+
 				</div>
 			);
 		} else {
@@ -288,7 +255,16 @@ export default RSVPForm;
 
 
 /*
-	// Used to Delete Database
+
+  	// USE ONLY TO DELETE THE GUESTS COLLECTION!!
+	<ButtonToolbar>
+	    <Button 
+			type="submit"
+			bsStyle="primary"
+			onClick= { this.onDelete }>Delete Guests Data
+	    </Button>
+	</ButtonToolbar>
+
 	onDelete = () => {
 		let deleteGuestsPath = 'api/delete';
 		let url = this.hostUrl + deleteGuestsPath;

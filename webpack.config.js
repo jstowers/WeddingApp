@@ -30,9 +30,9 @@ const config = {
   	// __dirname => const in nodeJS for current pwd
   	// usually save output to folder 'build'
   	output: {
-  		  path: path.resolve(__dirname, 'build'),
-  		  //publicPath: '/',
-      	filename: 'bundle.js'
+  		  path: path.resolve(__dirname, 'dist'),
+      	filename: 'bundle.js',
+        //publicPath: 'build/'
     },
 
   	// Loaders pre-process files before placing them into the bundle.js file
@@ -55,6 +55,14 @@ const config = {
     				use: ['style-loader', 'css-loader'],
     				test: /\.css$/
     			},
+          {
+            use: [
+              'file-loader?name=[name].[ext]&outputPath=images/&publicPath=images/',
+              'image-webpack-loader'
+            ],
+            test: /\.(jpeg|jpg|png|gif|svg)$/
+          }
+          /*
     			{
     				use: [
     					{
@@ -64,8 +72,9 @@ const config = {
     					},
     					'image-webpack-loader'
     				],
-    				test: /\.(jpe?g|png|gif|svg)$/
+    				test: /\.(jpeg|jpg|png|gif|svg)$/
     			}
+          */
     		]
     },
     resolve: {

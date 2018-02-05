@@ -2,12 +2,12 @@
 // Homepage
 
 import React, { Component } from 'react';
-import homeStyle from '../../style/03-home.css' 
+import homeStyle from '../../style/03-home.css';
 
 class Home extends Component {
 
 	render() {
-
+		
 		return (
 			<div className={ homeStyle }>
 				<div className="datetime">

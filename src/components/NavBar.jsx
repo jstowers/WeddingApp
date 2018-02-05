@@ -50,7 +50,7 @@ class NavBar extends Component {
 	// changes the selected tab from inactive to active
 	handleSelect = (selectedKey) => {
 	
-		console.log('selectedKey =', selectedKey);
+		// console.log('selectedKey =', selectedKey);
 
 		let tabs = this.state.tabs;
 

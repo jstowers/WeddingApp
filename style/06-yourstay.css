@@ -1,20 +1,18 @@
-
-.closeRSVP h2 {
+.hotelDetail h2 {
 	font-family: "Open Sans";
 	font-size: 20px;
 	color: rgb(194,24,7);
 }
 
-.closeRSVP h3 {
+.hotelDetail h3 {
 	font-family: Merriweather;
 	font-size: 16px;
 	color: black;
 	margin-top: 10px;
 }
 
-.bienvenidos h3 {
+.weblink h3 {
 	font-family: "Open Sans";
 	font-size: 16px;
 	color: rgb(64,224,208);
 }
-
