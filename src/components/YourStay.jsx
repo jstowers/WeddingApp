@@ -6,7 +6,7 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import yourstayStyle from '../../style/06-yourstay.css';
 // import indexPhotos from '../../img/hotels/indexPhotos.js';
 import NativoLodge from './NativoLodge.jpg';
-const NativoLodge2 = require('./NativoLodge.jpg');
+// const NativoLodge2 = require('./NativoLodge.jpg');
 
 const hotelsArray = [
 	{
@@ -20,7 +20,7 @@ const hotelsArray = [
 	},
 	{
 		name: 'Marriott Pyramid',
-		img: { NativoLodge },
+		img: '/images/NativoLodge.jpg',
 		url: 'http://bit.ly/19Swcb8',
 		address1: '5151 San Francisco Rd. NE',
 		address2: 'Albuquerque, NM 87109',
@@ -29,7 +29,7 @@ const hotelsArray = [
 	},
 	{
 		name: 'Courtyard Albuquerque',
-		img: { NativoLodge2 },
+		img: '/images/NativoLodge.jpg',
 		url: 'http://bit.ly/2GLve8H',
 		address1: '5151 Journal Center Blvd. NE',
 		address2: 'Albuquerque, NM 87109',
@@ -38,7 +38,7 @@ const hotelsArray = [
 	},
 	{
 		name: 'Staybridge Suites North',
-		img: './NativoLodge.jpg',
+		img: '/images/NativoLodge.jpg',
 		url: 'http://bit.ly/2BV9ELa',
 		address1: '5817 Signal Ave. NE',
 		address2: 'Albuquerque, NM 87113',
@@ -47,7 +47,7 @@ const hotelsArray = [
 	},
 	{
 		name: 'Sandia Resort & Casino',
-		img: './NativoLodge.jpg',
+		img: '/images/NativoLodge.jpg',
 		url: 'http://www.sandiacasino.com/hotel/',
 		address1: '30 Rainbow Rd. NE',
 		address2: 'Albuquerque, NM 87113',

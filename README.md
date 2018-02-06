@@ -603,5 +603,20 @@ file-loader is supposed to take these import references and translate them to th
 3.  Webpack is having trouble reading images with import or require statements. 
 !! Solution => reference all images with the relative path /imags/<imageName> which will reference the images stored in the dist/images/ folder.
 
-4.  I tried to add publicPath = /dist'
+4.  I tried to add publicPath = /dist', but this is not working at all.
+
+
+## Monday, February 5, 2018
+This morning I tried to deploy to production, but the website did not load.
+
+After review, I had commented out the import statemnt for the NativoLodge jpg from the YourStay component:
+
+```
+    import NativoLodge from './NativoLodge.jpg';
+````
+
+Without this line, webpack file-loader was not creating the images/ subdirectory in the dist/ folder.  This led to a failed build.  After adding the import statment, I recompiled in development mode, and the webpage reappeared.
+
+I am now deploying ver. 29.
+
 

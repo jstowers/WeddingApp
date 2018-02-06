@@ -6,7 +6,7 @@
     "scripts": {
         "build": "webpack",
         "start": "node app.js",
-        "clean": "rimraf dist",
+        "clean": "rimraf build",
         "test": "nodemon --exec 'mocha --recursive -R min'",
         "serve": "NODE_ENV=develop webpack-dev-server",
         "build:dev": "NODE_ENV=develop npm run build",
