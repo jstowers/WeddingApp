@@ -621,4 +621,75 @@ Without this line, webpack file-loader was not creating the images/ subdirectory
 
 I am now deploying ver. 29.
 
+_Workaround for Images_
 
+1.  I created an _img_ directory with subfolders.  One subfolder is 'home' and it stores the photos on the Home tab.  Another subfolder is 'hotels' and it stores the photos for the Your Stay tab.
+2.  Within each subfolder, I created an index.js file that is used to generate an export object of images:
+
+    ```
+        import NativoLodge from './NativoLodge.jpg';
+        import MarriottPyramid from './MarriottPyramid.jpg';
+        import CourtyardMarriott from './CourtyardMarriott.jpg';
+        import StaybridgeSuites from './StaybridgeSuites.jpg';
+        import SandiaCasino from './SandiaCasino.jpg';
+        import HyattTamaya from './HyattTamaya.jpg';
+
+        export default { 
+            NativoLodge, 
+            MarriottPyramid,
+            CourtyardMarriott,
+            StaybridgeSuites,
+            SandiaCasino,
+            HyattTamaya
+        };
+    ```
+    This format allows for easier import of the image files in my React components.
+
+3.  In the _YourStay_ component, I import the hotel images with the following command:
+
+    ```
+        import { 
+            NativoLodge, 
+            MarriottPyramid,
+            CourtyardMarriott,
+            StaybridgeSuites,
+            SandiaCasino,
+            HyattTamaya
+        } from '../../img/hotels/indexPhotos';
+    ```
+
+4.  For a reason that may be related to the file loaders I am using in my webpack.config file, I cannot reference these images in my code from the import statement.  
+
+5.  The only way to display the images when webpack builds its bundle is to define the path for each image in the final build directory:
+
+    ```
+        hotelsArray = [
+            {
+                name: 'Marriott Pyramid',
+                img: '/images/MarriottPyramid.jpg',
+                url: 'http://bit.ly/19Swcb8',
+                address1: '5151 San Francisco Rd. NE',
+                address2: 'Albuquerque, NM 87109',
+                phone: '505-821-3333',
+                distance: '4.0 miles'
+            }
+        ]
+    ```
+
+6.   A sample reference to this image could be:
+
+    ```
+        <img src = { hotelsArray[0].img }
+             alt = { hotelsArray[0].name} />
+    ```
+
+
+
+### Friday, February 9, 2018
+
+_To Do_
++  Add content for To Do and Restaurants
++  Determine how to modify styling of react tabs (font, color)
++  RSVP Form
+    *  Move Cancel and Submit buttons to right side
+    *  Consider a div with another image
