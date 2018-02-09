@@ -4,14 +4,12 @@
 import React, { Component } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import yourstayStyle from '../../style/06-yourstay.css';
-// import indexPhotos from '../../img/hotels/indexPhotos.js';
-import NativoLodge from './NativoLodge.jpg';
-// const NativoLodge2 = require('./NativoLodge.jpg');
+import { NativoLodge } from '../../img/hotels/indexPhotos';
 
 const hotelsArray = [
 	{
 		name: 'Nativo Lodge',
-		img: '/images/NativoLodge.jpg',
+		img: 'images/NativoLodge.jpg',
 		url: 'http://www.nativolodge.com/',
 		address1: '6000 Pan American Freeway NE',
 		address2: 'Albuquerque, NM 87109',
@@ -58,8 +56,6 @@ const hotelsArray = [
 
 
 const YourStay = () => {
-
-	// console.log('hotelsArray =', hotelsArray);
 
 	const hotelItems = hotelsArray.map((hotel,index) => {
 		return (
