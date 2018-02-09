@@ -7,7 +7,6 @@
 	color: rgb(194,24,7);
 }
 
-
 .datetime h3,
 .ceremony h3,
 .reception h3 {
@@ -31,4 +30,14 @@
 .reception {
 	padding: 10px;
 	margin-left: 30px;
+}
+
+.homePhoto img {
+	width: 100%;
+    height: auto;
+	margin-top: 40px;
+	border-style: solid;
+	border-color: rgb(64,224,208);
+	border-width: 5px;
+	border-radius: 4px;
 }

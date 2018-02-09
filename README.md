@@ -5,16 +5,18 @@ An interactive, dynamic wedding app built with React, Node, Express, and MongoDB
 To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow these two steps:
 
 1.  Build the webpack module in development mode:
-````
+```
         $ npm run build:dev
-````
+```
 
 2.  Start the local server:
-````
+```
         $ npm start
-````
+```
 
-3.  Any database calls will be made to the MongoDB Atlas cluster.
+3.  Open a browser window and type localhost:3000.
+
+4.  Any database calls will be made to the MongoDB Atlas cluster.
 
 
 ## Build App for Production Deployment
