@@ -48,7 +48,7 @@ const hotelsArray = [
 		address1: '6000 Pan American Freeway NE',
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-798-4300',
-		distance: '6.0 miles'
+		distance: '5.2 miles'
 	},
 	{
 		name: 'Sandia Resort & Casino',
