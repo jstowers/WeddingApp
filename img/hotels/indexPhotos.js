@@ -1,15 +1,23 @@
-import NativoLodge from './NativoLodge.jpg';
-import MarriottPyramid from './MarriottPyramid.jpg';
+import AirBNB from './AirBNB.jpg';
 import CourtyardMarriott from './CourtyardMarriott.jpg';
-import StaybridgeSuites from './StaybridgeSuites.jpg';
-import SandiaCasino from './SandiaCasino.jpg';
+import DruryInn from './DruryInn.jpg';
+import HamptonInn from './HamptonInn.jpg';
 import HyattTamaya from './HyattTamaya.jpg';
+import LosPoblanos from './LosPoblanos.jpg';
+import MarriottPyramid from './MarriottPyramid.jpg';
+import NativoLodge from './NativoLodge.jpg';
+import SandiaCasino from './SandiaCasino.jpg';
+import StaybridgeSuites from './StaybridgeSuites.jpg';
 
 export default { 
-	NativoLodge, 
-	MarriottPyramid,
+	AirBNB,
 	CourtyardMarriott,
-	StaybridgeSuites,
+	DruryInn,
+	HamptonInn,
+	HyattTamaya,
+	LosPoblanos,
+	MarriottPyramid,
+	NativoLodge,
 	SandiaCasino,
-	HyattTamaya
+	StaybridgeSuites
 };

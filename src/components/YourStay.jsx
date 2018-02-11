@@ -5,15 +5,37 @@ import React, { Component } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import yourstayStyle from '../../style/06-yourstay.css';
 import { 
-	NativoLodge, 
-	MarriottPyramid,
+	AirBNB,
 	CourtyardMarriott,
-	StaybridgeSuites,
+	DruryInn,
+	HamptonInn,
+	HyattTamaya,
+	LosPoblanos,
+	MarriottPyramid,
+	NativoLodge,
 	SandiaCasino,
-	HyattTamaya
+	StaybridgeSuites
 } from '../../img/hotels/indexPhotos';
 
 const hotelsArray = [
+	{
+		name: 'AirBNB - Village of Los Ranchos',
+		img: '/images/AirBNB.jpg',
+		url: 'http://bit.ly/2H3WkrD',
+		address1: 'Entire homes or private rooms to rent',
+		address2: 'Los Ranchos, NM 87114',
+		phone: 'Enjoy the peace and tranquility of the Village',
+		distance: 'distance varies from 1.0 to 3.0 miles'
+	},
+	{
+		name: 'Los Poblanos Historic Inn & Organic Farm',
+		img: '/images/LosPoblanos.jpg',
+		url: 'http://www.lospoblanos.com/',
+		address1: '4803 Rio Grande Blvd NW',
+		address2: 'Los Ranchos, NM 87107',
+		phone: '505-344-9297',
+		distance: '2.3 miles'
+	},
 	{
 		name: 'Marriott Pyramid',
 		img: '/images/MarriottPyramid.jpg',
@@ -42,6 +64,15 @@ const hotelsArray = [
 		distance: '4.7 miles'
 	},
 	{
+		name: 'Drury Inn & Suites North',
+		img: '/images/DruryInn.jpg',
+		url: 'http://bit.ly/2Cc0qdB',
+		address1: '4310 The 25 Way NE',
+		address2: 'Albuquerque, NM 87109',
+		phone: '505-341-3600',
+		distance: '5.1 miles'
+	},
+	{
 		name: 'Nativo Lodge',
 		img: 'images/NativoLodge.jpg',
 		url: 'http://www.nativolodge.com/',
@@ -49,6 +80,15 @@ const hotelsArray = [
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-798-4300',
 		distance: '5.2 miles'
+	},
+	{
+		name: 'Hampton Inn & Suites',
+		img: '/images/HamptonInn.jpg',
+		url: 'http://bit.ly/2vlO448',
+		address1: '4412 The 25 Way NE',
+		address2: 'Albuquerque, NM 87109',
+		phone: '505-345-4501',
+		distance: '5.3 miles'
 	},
 	{
 		name: 'Sandia Resort & Casino',

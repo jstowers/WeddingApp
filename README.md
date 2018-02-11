@@ -693,3 +693,8 @@ _To Do_
 +  RSVP Form
     *  Move Cancel and Submit buttons to right side
     *  Consider a div with another image
+
+### Saturday, February 10, 2018
+
++  Deploy _ver32_, which finalizes the YourStay component with the addition of two hotels and an AirBNB listing.
++  
