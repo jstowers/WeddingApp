@@ -9,6 +9,8 @@ import {
 	BioParkAquarium,
 	BioParkGarden,
 	DaVinci,
+	OldTown,
+	SanFelipe,
 	SandiaTram
 } from '../../img/todo/indexTodos';
 
@@ -60,7 +62,32 @@ const toDoArray = [
 		note: 'Captivating marine habitats featuring sharks, fish, stingrays, and turtles.',
 		cost1: '$14.50 adults, $7.50 seniors, $6 children',
 		cost2: 'combo tickets available for Botanic Garden'
-	}
+	},
+	{
+		name: 'Old Town',
+		location: '',
+		img: '/images/OldTown.jpg',
+		url: 'http://www.albuquerqueoldtown.com/',
+		address1: '200 N. Plaza St. NW',
+		address2: 'Albuquerque, NM 87104',
+		phone: '505-373-9123',
+		note: 'Historic plaza dating back to the city\'s founding in 1706.',  
+		cost1: 'ABQ\'s cultural mecca filled with shops, restaurants, Indian jewelry, and art galleries.',
+		cost2: '',
+	},
+	{
+		name: 'San Felipe de Neri Catholic Church',
+		location: 'Old Town',
+		img: '/images/SanFelipe.jpg',
+		url: 'https://sanfelipedeneri.org/',
+		address1: '2005 N. Plaza St. NW',
+		address2: 'Albuquerque, NM 87104',
+		phone: '505-243-4628',
+		note: 'Traditional adobe Catholic church built in 1792.',  
+		cost1: '',
+		cost2: '',
+	},
+
 ];
 
 const toDoItems = toDoArray.map((item, index) => {
@@ -100,7 +127,7 @@ class ToDo extends Component {
 			<div className={ toDoStyle }>
 				<div className = "toDoHeader">
 					<h3>Albuquerque offers an abundance of fun experiences!<br/><br/>
-						Hay una abundancia de diversiones y entretenimientos en Albuquerque!
+						Hay una abundancia de diversiones y entretenimiento en Albuquerque!
 					</h3>
 				</div>
 				<Grid className = "gridContainer">

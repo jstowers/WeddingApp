@@ -9,6 +9,8 @@ import {
 	CourtyardMarriott,
 	DruryInn,
 	HamptonInn,
+	HotelAbq,
+	HotelChaco,
 	HyattTamaya,
 	LosPoblanos,
 	MarriottPyramid,
@@ -24,8 +26,10 @@ const hotelsArray = [
 		url: 'http://bit.ly/2H3WkrD',
 		address1: 'Entire homes or private rooms to rent',
 		address2: 'Los Ranchos, NM 87114',
-		phone: 'Enjoy the peace and tranquility of the Village',
-		distance: 'distance varies from 1.0 to 3.0 miles'
+		phone: '',
+		distance: '1.0 - 3.0 miles',
+		note1: 'Enjoy the peace and tranquility of the Village',
+		note2: '$45 - $150/night'
 	},
 	{
 		name: 'Los Poblanos Historic Inn & Organic Farm',
@@ -34,7 +38,9 @@ const hotelsArray = [
 		address1: '4803 Rio Grande Blvd NW',
 		address2: 'Los Ranchos, NM 87107',
 		phone: '505-344-9297',
-		distance: '2.3 miles'
+		distance: '2.3 miles',
+		note1: 'Acclaimed inn, farm, and lavender field on a bucolic 25-acre property',
+		note2: '$440+/night'
 	},
 	{
 		name: 'Marriott Pyramid',
@@ -43,7 +49,9 @@ const hotelsArray = [
 		address1: '5151 San Francisco Rd. NE',
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-821-3333',
-		distance: '4.0 miles'
+		distance: '4.0 miles',
+		note1: 'Quick access to I-25 and Paseo del Norte; next to NM\'s only Cabela\'s',
+		note2: '$139+/night'
 	},
 	{
 		name: 'Courtyard Albuquerque',
@@ -52,7 +60,9 @@ const hotelsArray = [
 		address1: '5151 Journal Center Blvd. NE',
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-823-1919',
-		distance: '4.0 miles'
+		distance: '4.0 miles',
+		note1: 'Quick access to I-25 and Paseo del Norte; next to NM\'s only Cabela\'s',
+		note2: '$165+/night'
 	},
 	{
 		name: 'Staybridge Suites North',
@@ -61,7 +71,9 @@ const hotelsArray = [
 		address1: '5817 Signal Ave. NE',
 		address2: 'Albuquerque, NM 87113',
 		phone: '505-266-7829',
-		distance: '4.7 miles'
+		distance: '4.7 miles',
+		note1: 'Easy access to I-25, Paseo del Norte, and Sandia Casino',
+		note2: '$140+/night'
 	},
 	{
 		name: 'Drury Inn & Suites North',
@@ -70,7 +82,9 @@ const hotelsArray = [
 		address1: '4310 The 25 Way NE',
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-341-3600',
-		distance: '5.1 miles'
+		distance: '5.1 miles',
+		note1: 'Convenient access to I-25, restaurants, and movie theater',
+		note2: '$120+/night'
 	},
 	{
 		name: 'Nativo Lodge',
@@ -79,7 +93,9 @@ const hotelsArray = [
 		address1: '6000 Pan American Freeway NE',
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-798-4300',
-		distance: '5.2 miles'
+		distance: '5.2 miles',
+		note1: 'Economical, Indian-themed rooms close to I-25 and restaurants',
+		note2: '$95+/night'
 	},
 	{
 		name: 'Hampton Inn & Suites',
@@ -88,7 +104,31 @@ const hotelsArray = [
 		address1: '4412 The 25 Way NE',
 		address2: 'Albuquerque, NM 87109',
 		phone: '505-345-4501',
-		distance: '5.3 miles'
+		distance: '5.3 miles',
+		note1: 'Convenient access to I-25, restaurants, and movie theater',
+		note2: '$149+/night'
+	},
+	{
+		name: 'Hotel Chaco',
+		img: '/images/HotelChaco.jpg',
+		url: 'https://www.hotelchaco.com/',
+		address1: '2000 Bellamah Ave NW',
+		address2: 'Albuquerque, NM 87104',
+		phone: '505-246-9989',
+		distance: '5.8 miles',
+		note1: 'Chic, new, and hip; a short walk to Old Town',
+		note2: '$200+/night' 
+	},
+	{
+		name: 'Hotel Albuquerque at Old Town',
+		img: '/images/HotelAbq.jpg',
+		url: 'https://www.hotelabq.com/',
+		address1: '800 Rio Grande Blvd. NW',
+		address2: 'Albuquerque, NM 87104',
+		phone: '505-843-6300',
+		distance: '5.8 miles',
+		note1: 'Large, established and well-regarded hotel next to Old Town',
+		note2: '$160+/night' 
 	},
 	{
 		name: 'Sandia Resort & Casino',
@@ -97,7 +137,9 @@ const hotelsArray = [
 		address1: '30 Rainbow Rd. NE',
 		address2: 'Albuquerque, NM 87113',
 		phone: '505-796-7500',
-		distance: '6.3 miles'
+		distance: '6.3 miles',
+		note1: 'Casino, golf, spa, and fine dining',
+		note2: '$249+/night; limited availability Fri (4/27), Sat (4/28), and Sun (4/29)' 
 	},
 	{
 		name: 'Hyatt Regency Tamaya Resort & Spa',
@@ -106,7 +148,9 @@ const hotelsArray = [
 		address1: '1300 Tuyuna Trail',
 		address2: 'Santa Ana Pueblo, NM 87004',
 		phone: '505-867-1234',
-		distance: '16.0 miles'
+		distance: '16.0 miles',
+		note1: 'Availability Fri (4/27) and Sat (4/28) nights only',
+		note2: '$262+/night'
 	}
 ]
 
@@ -133,8 +177,10 @@ const YourStay = () => {
 						</a>
 						<h3>{ hotel.address1 }</h3>
 						<h3>{ hotel.address2 }</h3>
-						<h4>{ hotel.phone }</h4>
+						<h3>{ hotel.phone }</h3>
 						<h4>{ hotel.distance }</h4>
+						<h4>{ hotel.note1 }</h4>
+						<h4>{ hotel.note2 }</h4>
 					</div>
 				</Col>
 			</Row>
