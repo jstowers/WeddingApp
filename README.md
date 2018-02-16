@@ -570,21 +570,27 @@ Webpack is loading the image files as [Object][object]
 _11:14 am_
 
 ### Installed Rimraf Package to Clean Previous _Build_ Directory
--- Grider, Webpack, "Cleaning Project Files"
--- Sec. 5, Lec. 39, 2:30
--- Loaded npm package rimraf, which is a module for cleaning up directories in either Unix or Windows (a compatibility module).  This package will delete the previous build folder and all its contents before a new build:
+
+- Grider, Webpack, "Cleaning Project Files"
+- Sec. 5, Lec. 39, 2:30
+
+- Loaded npm package _rimraf_, a module for cleaning up directories in either Unix or Windows (a compatibility module).  This package deletes the previous build folder and all its contents before a new build:
 
 ```
     $  npm install --save-dev rimraf
 ```
 
--- Added and incorporated the following _clean_ script to the package.json file:
+- Added the following _clean_ script to the package.json file:
 ```
     "scripts": {
-        "clean": "rimraf build",
-        "build": "clean && webpack",
-        "build:dev": "NODE_ENV=develop npm run build"
+        "clean": "rimraf build"
     }   
+```
+
+- To run rimraf, type the following command:
+```
+    $ npm run clean
+
 ```
 
 ## Loading Images with Webpack
@@ -608,7 +614,7 @@ file-loader is supposed to take these import references and translate them to th
 4.  I tried to add publicPath = /dist', but this is not working at all.
 
 
-## Monday, February 5, 2018
+### Monday, February 5, 2018
 This morning I tried to deploy to production, but the website did not load.
 
 After review, I had commented out the import statemnt for the NativoLodge jpg from the YourStay component:
@@ -697,4 +703,19 @@ _To Do_
 ### Saturday, February 10, 2018
 
 +  Deploy _ver32_, which finalizes the YourStay component with the addition of two hotels and an AirBNB listing.
-+  
+
+### Sunday, February 11, 2018
+
++ Deploy _ver35_
+    * Build out _OurStory_ with Ivy's historia and photos
+    * Update _YourStay_ with price and notes added for each hotel
+    * Update _ToDo_ with additional ABQ attractions
+
++ _To Do_
+    * Add additional ABQ attractions to _ToDo_
+    * Build out _Restaurants_
+    * Write my story and add pictures
+    * Consider methods for faster loading of CSS and image files
+    * Add tab to toggle between English/Spanish
+
+

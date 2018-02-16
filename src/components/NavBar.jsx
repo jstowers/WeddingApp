@@ -81,7 +81,7 @@ class NavBar extends Component {
 			     	<NavItem eventKey={2}>Our Story</NavItem>
 		     	</LinkContainer>
 
-		     	<LinkContainer to='RSVP'
+		     	<LinkContainer to='RSVPFormNew'
 		     	               className={ this.state.tabs[3] }>
 			     	<NavItem eventKey={3}>RSVP</NavItem>
 		     	</LinkContainer>

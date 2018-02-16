@@ -64,7 +64,7 @@ class RSVPForm extends Component {
 
 		let addGuestPath = 'api/addGuest';
 		let url = this.hostUrl + addGuestPath;
-		// console.log('RSVPConfirm url =', url);
+		console.log('RSVPConfirm url =', url);
 
 		let body = {
 			'name': this.state.name,
