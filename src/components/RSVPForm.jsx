@@ -55,9 +55,6 @@ class RSVPForm extends Component {
 		this.setState({ [id]:value });
 	}
 
-
-
-
 	onFormCancel = () => {
 		this.setState(this.baseState);
 	}

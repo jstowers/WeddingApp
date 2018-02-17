@@ -1,20 +1,23 @@
 # WeddingApp
-An interactive, dynamic wedding app built with React, Node, Express, and MongoDB (MERN).
+An interactive, dynamic wedding planning and travel app built with React, Node, Express, and MongoDB (MERN).
 
 ## Run App in Development Mode  
 To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow these two steps:
 
 1.  Build the webpack module in development mode:
-```
+    ```
         $ npm run build:dev
-```
+    ```
 
-2.  Start the local server:
-```
+2.  Start the local Node server:
+    ```
         $ npm start
-```
+    ```
 
-3.  Open a browser window and type localhost:3000.
+3.  Open a browser window and type the following address:
+    ```
+        http://localhost:3000
+    ```
 
 4.  Any database calls will be made to the MongoDB Atlas cluster.
 
@@ -22,22 +25,28 @@ To run the app on localhost:3000 with a live connection to MongoDB Atlas, follow
 ## Build App for Production Deployment
 The app is currently deployed on an AWS Elastic Beanstalk cluster.  The MongoDB database is served on a separate AWS EC2 instance and configured through MongoDB Atlas.
 
-1.  Build the webpack module for production:
-````
+1.  Delete any previous build folder and files:
+
+    ```
+        $ npm run clean
+    ```
+
+2.  Build the webpack module for production:
+    ```
         $ npm run build:production
-````
+    ```
 
-2.  After the build, go to the Finder window and navigate to the app directory.
+3.  After the build, go to the Finder window and navigate to the app directory.
 
-3.  Open the root directory and compress all the files into a ZIP file.
+4.  Open the root directory and compress all the files into a ZIP file.
 
-4.  Move the compressed file to the WeddingApp-Build folder.
+5.  Move the compressed file to the WeddingApp-Build folder.
 
-5.  In the browser, login into AWS and navigate to Elastic Beanstalk and the current app deployment.
+6.  In the browser, login into AWS and navigate to Elastic Beanstalk and the current app deployment.
 
-6.  Click the _Upload and Deploy_ button.  Select the compressed folder from the WeddingApp-Build folder.
+7.  Click the _Upload and Deploy_ button.  Select the compressed folder from the WeddingApp-Build folder.
 
-7.  The upload and deployment process on Elastic Beanstalk takes about 5-7 minutes.
+8.  The Elastic Beanstalk upload and deployment process takes about 7-10 minutes.
 
 ## Run App on Your Local Machine
 To run the app entirely on your local machine, you will need to spin-up three servers:
@@ -46,66 +55,67 @@ To run the app entirely on your local machine, you will need to spin-up three se
     - Server 2, running on port 3050, will connect the front-end browser to the back-end Mongo database via an Express server.
     - Server 3, running on port 27017, will run the mongod process that serve the content from the Mongo database.
 
-1.  To start the frontend client server on port 8080, open a new tab in the console, change to the WeddingApp root directory, and run:
-    ````
+1.  To start the frontend client server on port 8080, open a new tab in the console, change to the _WeddingApp_ root directory, and run:
+    ```
         $ npm run serve
-    ````
+    ```
 
 2.  Open a browser window and navigate to:
-    ````
+    ```
         http://localhost:8080
-    ````
+    ```
 
 3.  To start the backend Node/Express server on port 3050, open a new tab in the console, change to the WeddingApp root directory, and run:
-    ````
+    ```
         $ node app.js
-    ````
+    ```
 
 4.  To start the mongod process on port 27017, open a new tab in the console and run the following command:
-    ````
+    ```
         $ mongod
-    ````
+    ```
 
-mongod is the main background process (daemon) that handles data requests, manages data access, and performs background management operations for the Mongo database.
+    mongod is the main background process (daemon) that handles data requests, manages data access, and performs background management operations for the Mongo database.
 
 5.  To shut down the mongod process, in a new tab in the console, open a mongodb shell and then run the following two commands:
-    ````
+
+    ```
         $ mongodb
         > use admin
         > db.shutdownServer()
-    ````
+    ```
 
-The above commands should kill the mongod process.  If mongod errors and says the socket/address for port 27017 is already in use, you can kill the previous mongod process with two unix commands:
+    The above commands should kill the mongod process.  If mongod errors and says the socket/address for port 27017 is already in use, you can kill the previous mongod process with two unix commands:
 
-    ````
+    ```
         $ ps wuax | grep mongo
-    ````
+    ```
 
 The output will show a couple of lines of code like this:
     
-    ````
+    ```
         jstowers  2408   0.3  0.1  2584216 9988 ??  S  Mon03PM 2:04.14 mongod
-    ````
+    ```
 
 Next, kill the instance of mongod that is running:
 
-    ```` 
+    ```
         $ kill 2408
-    ````
+    ```
 
 
 ## Run the Backend Mocha Tests on Your Local Machine
 
 1.  To start the mongod process, open a new tab in the console and type:
-    ````
+    ```
         $ mongod
-    ````
+    ```
 If the mongod process is not running in the background, the Mocha tests attempting to connect to the Mongo database will fail.
 
 2.  To run the Mocha test suite, open a new tab in the console, change to the WeddingApp directory, and run this test script:
-    ````
+    ```
         $ npm run test
-    ````
+    ```
 
 ---
 
@@ -120,19 +130,18 @@ If the mongod process is not running in the background, the Mocha tests attempti
 
         After research, I determined that the arrow functions were not being read by the browser.  https://medium.com/@joshblack/writing-a-react-component-in-es2015-a0b27e1ed50a
 
-        But, by installing the following plugin, babel-plugin-transform-class-properties, the arrow functions work.
+        But, by installing the following plugin, _babel-plugin-transform-class-properties_, the arrow functions work.
 
         To install:
         1.  npm install --save-dev babel-plugin-transform-class-properties
         2.  update the .babelrc file to include this plugin:
-        ````
+            ```
             {
                 "presets": ["babel-preset-env", "react"],
                 "plugins": ["transform-class-properties"]
             }
-        ````
+            ```
         3.  rerun the webpack dev server
-
 
 - Hook up MongoDB to RSVP Form
 
@@ -140,12 +149,14 @@ If the mongod process is not running in the background, the Mocha tests attempti
 
     2.  Install express and mocha as dependencies
 
-        ````
+        ```
             npm install --save express mocha
+        ```
 
     3.  Install mongodb Express driver
-        ````
+        ```
             npm install --save mongodb
+        ```
 
     4.  Compare between mongoose and mongodb Node drivers
 
@@ -159,10 +170,12 @@ If the mongod process is not running in the background, the Mocha tests attempti
 
         "test": "nodemon --exec 'mocha --recursive -R min'",
 
+---
+
 
 ### Sunday, January 14, 2018
 
--- Parts of Express App
+**Parts of Express App**
 1.  Router -- looks at URL and method of incoming request and sends that request to the appropriate route handler.  Will separate routing logic from logic of how to respond to the request.
 
 2.  Controller -- logic of how to respond to a particular request
@@ -172,13 +185,16 @@ If the mongod process is not running in the background, the Mocha tests attempti
 
 *** Mongo requires a directory to be pre-named to store data on the server.  
 
-        sudo mkdir -p /data/db
+    ```        
+        $ sudo mkdir -p /data/db
+    ```
 
 
 *** Stopping the Mongo Driver
 
-        
+    ```        
         $ brew services stop mongodb
+    ```
 
 
 *** Node Receiving a POST Request
@@ -740,3 +756,13 @@ _To Do_
 + To Do
     * Add a .env file to save my MongoDB develop password
     * Refactor Nav bar buttons so they don't appear scrunched in other browsers
+    * Update restaurants to include Martín in Santa Fe and Mary & Tito's
+    * Update hotels to include more economical options between $95-$105
+    * Update things to do to include National Hispanic Cultural Center (Bless Me Ultima exhibition) and Indian Pueblo Cultural Center, and Balloon Rides
+
++ Completed
+    * Deploy _ver38_
+    * Add a config folder that separates development and production passwords/keys
+    * Fully operating dev and prod databases running with RSVPForm working in all environments
+
++ Completed

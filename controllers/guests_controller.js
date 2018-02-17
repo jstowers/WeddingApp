@@ -7,22 +7,11 @@
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const keys = require('../config/keys');
+const url = keys.mongoURL;
 
 // localhost for mongod process
 // const url = 'mongodb://localhost:27017/';
-
-// Production
-const password = process.env.MONGODB_PASSWORD;
-
-// Development
-// const password = 'D2pl8wlTg3Cy78VC@ij2';
-
-// MongoDB Atlas ij2 Cluster - M10 Instance Size
-const url = 'mongodb://jstowers:'+password+'-shard-00-00-'+
-	'zha7t.mongodb.net:27017,ij2-shard-00-01-'+
-	'zha7t.mongodb.net:27017,ij2-shard-00-02-'+
-	'zha7t.mongodb.net:27017/test?ssl=true&replicaSet=IJ2-shard-'+
-	'0&authSource=admin';
 
 // each key-value pair in the module represents a request handler
 module.exports = {
@@ -43,28 +32,34 @@ module.exports = {
 			console.log('successfully connected to MongoDB.');
 
 			if (process.env.NODE_ENV === 'production') {
-				let db = client.db('weddingDB');
+				let db = client.db('weddingDB-prod');
 				let guests = db.collection('guests');
+				let cursor = guests.find();
+				cursor.forEach((doc, err) => {
+					assert.equal(null, err);
+					resultArr.push(doc);
+				}, () => {
+					console.log('resultArr = ', resultArr);
+					res.status(200).send(resultArr);
+					client.close();
+				});
 			} else {
-				db = client.db('weddingDB-dev');
-				guests = db.collection('guests');
+				let db = client.db('weddingDB-dev');
+				let guests = db.collection('guests');
+				let cursor = guests.find();
+				cursor.forEach((doc, err) => {
+					assert.equal(null, err);
+					resultArr.push(doc);
+				}, () => {
+					console.log('resultArr = ', resultArr);
+					res.status(200).send(resultArr);
+					client.close();
+				});
 			}
-			
-			let cursor = guests.find();
-			cursor.forEach((doc, err) => {
-				assert.equal(null, err);
-				resultArr.push(doc);
-			}, () => {
-				console.log('resultArr = ', resultArr);
-				res.status(200).send(resultArr);
-				client.close();
-			});
 		});
 	},
 
 	create(req, res) {
-
-		console.log('create req.body =', req.body);
 
 		let item = {
 			name: req.body.name,
@@ -80,19 +75,24 @@ module.exports = {
 			console.log("successfully connected to MongoDB.");
 
 			if (process.env.NODE_ENV === 'production') {
-				let db = client.db('weddingDB');
+				let db = client.db('weddingDB-prod');
 				let guests = db.collection('guests');
+				guests.insertOne(item, (err, response) => {
+					assert.equal(null, err);
+					console.log('a guest was added to the weddingDB-prod guests collection.');
+					res.status(200).send(response.ops);
+					client.close();
+				})
 			} else {
-				db = client.db('weddingDB-dev');
-				guests = db.collection('guests');
+				let db = client.db('weddingDB-dev');
+				let guests = db.collection('guests');
+				guests.insertOne(item, (err, response) => {
+					assert.equal(null, err);
+					console.log('a guest was added to the weddingDB-dev guests collection.');
+					res.status(200).send(response.ops);
+					client.close();
+				})
 			}
-
-			guests.insertOne(item, (err, response) => {
-				assert.equal(null, err);
-				console.log('a guest was added to the guests collection.');
-				res.status(200).send(response.ops);
-				client.close();
-			});
 		});
 	},
 
@@ -102,19 +102,24 @@ module.exports = {
 			console.log("successfully connected to MongoDB.");
 
 			if(process.env.NODE_ENV === 'production') {
-				let db = client.db('weddingDB');
+				let db = client.db('weddingDB-prod');
 				let guests = db.collection('guests');
+				guests.drop((err, response) => {
+					assert.equal(null, err);
+					console.log('the weddingDB-prod guests collection was deleted.');
+					res.status(200).send('success');
+					client.close();
+				});
 			} else {
-				db = client.db('weddingDB-dev');
-				guests = db.collection('guests');
+				let db = client.db('weddingDB-dev');
+				let guests = db.collection('guests');
+				guests.drop((err, response) => {
+					assert.equal(null, err);
+					console.log('the weddingDB-dev guests collection was deleted.');
+					res.status(200).send('success');
+					client.close();
+				});
 			}
-
-			guests.drop((err, response) => {
-				assert.equal(null, err);
-				console.log('the guests collection was deleted.');
-				res.status(200).send('success');
-				client.close();
-			});
 		});
 	}
 }
