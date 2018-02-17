@@ -2,20 +2,19 @@
 // February 13, 2018
 
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { 
+	Button,
+	ButtonToolbar, 
+	Table 
+} from 'react-bootstrap';
 import formStyle from '../../style/05-rsvp.css';
-import { Button, Table } from 'react-bootstrap';
 
-// entry form
-
-// on submit, direct to confirmation component, send request body as props
-
-// on submit, make POST request to database
 
 class RSVPConfirm extends Component {
 
 	constructor(props) {
 		super(props);
-
 	}
 
 	goBack = () => {
@@ -26,6 +25,18 @@ class RSVPConfirm extends Component {
 			pathname: '/RSVPFormNew',
 			state: { RSVPData: RSVPData }
 		});
+	}
+
+	onRSVPConfirm = () => {
+
+		let RSVPData = this.props.location.state.RSVPData;
+
+		// route to RSVPPost page		
+		this.props.history.push({
+			pathname: '/RSVPPost',
+			state: { RSVPData: RSVPData }
+		});
+
 	}
 
 	showConfirmForm = (RSVP) => {
@@ -53,17 +64,21 @@ class RSVPConfirm extends Component {
 							<td><b>{ RSVP.numChildren }</b></td>
 						</tr>
 						<tr>
-							<td>Your Song Request</td>
+							<td>Song Request for Reception</td>
 							<td><b>{ RSVP.songRequest }</b></td>
 						</tr>
 					</tbody>
 				</Table>
-				<div>
-					<Button onClick={ this.goBack }>Go Back</Button>
-	      			<Button bsStyle="primary"
+				<ButtonToolbar>
+					<Button bsStyle="danger"
+		        		    style={{color: 'white', 'textDecoration':'none'}}
+					        onClick={ this.goBack }>Go Back
+			        </Button>
+	      			<Button type="submit"
+	      					bsStyle="primary"
 	      		  			onClick={ this.onRSVPConfirm }>Confirm RSVP
 	      			</Button>
-				</div>
+				</ButtonToolbar>
 			</div>
 		);
 	}
@@ -82,23 +97,9 @@ class RSVPConfirm extends Component {
 
 }
 
-/*
-const RSVPConfirm = () => {
-
-	console.log('INSIDE RSVPConfirm');
-
-	return (
-		<div>
-			<h3>You have reached the RSVP Confirm screen!</h3>
-		</div>
-	);
-}
-*/
-
-export default RSVPConfirm;
+export default withRouter(RSVPConfirm);
 
 /*
-
 	onRSVPConfirm = () => {
 
 		let addGuestPath = 'api/addGuest';
@@ -170,39 +171,4 @@ export default RSVPConfirm;
 			 </Modal>
 		)
 	}
-
-	modalBody = () => {
-		return (
-			<div>
-				<h2>
-					<b>{this.state.name},</b>
-				</h2>
-				<h4>
-					Your presence is an honor to our families!
-					<br />
-					<br />
-				</h4>
-				<Table>
-					<tbody>
-						<tr>
-							<td>Number of Adults</td>
-							<td><b>{ this.state.numAdults }</b></td>
-						</tr>
-						<tr>
-							<td>Number of Children</td>
-							<td><b>{ this.state.numChildren }</b></td>
-						</tr>
-						<tr>
-							<td>Your Song Request</td>
-							<td><b>{ this.state.songRequest }</b></td>
-						</tr>
-					</tbody>
-				</Table>
-			</div>
-		)
-	}
-
-
-
-
 */

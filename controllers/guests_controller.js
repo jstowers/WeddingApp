@@ -12,10 +12,10 @@ const assert = require('assert');
 // const url = 'mongodb://localhost:27017/';
 
 // Production
-const password = process.env.MONGODB_PASSWORD;
+// const password = process.env.MONGODB_PASSWORD;
 
 // Development
-// const password = 'D2pl8wlTg3Cy78VC@ij2';
+const password = 'D2pl8wlTg3Cy78VC@ij2';
 
 // MongoDB Atlas ij2 Cluster - M10 Instance Size
 const url = 'mongodb://jstowers:'+password+'-shard-00-00-'+
@@ -71,31 +71,24 @@ module.exports = {
 			email: req.body.email,
 			numAdults: req.body.numAdults,
 			numChildren: req.body.numChildren,
-			songRequest: req.body.songRequest
+			songRequest: req.body.songRequest,
+			postDate: req.body.postDate
 		}
 
 		MongoClient.connect(url, (err, client) => {
 			assert.equal(null, err);
 			console.log("successfully connected to MongoDB.");
 
-			let db = client.db('weddingDB');
-			let guests = db.collection('guests');
-
-			/* CODE FAILED with REACT ROUTER??
 			if (process.env.NODE_ENV === 'production') {
-				console.log('in IF statement for process.env.NODE_ENV = production');
 				let db = client.db('weddingDB');
 				let guests = db.collection('guests');
 			} else {
-				console.log('inside the else statement');
 				db = client.db('weddingDB-dev');
 				guests = db.collection('guests');
 			}
-			*/
 
 			guests.insertOne(item, (err, response) => {
 				assert.equal(null, err);
-				// console.log('insertOne response =', response);
 				console.log('a guest was added to the guests collection.');
 				res.status(200).send(response.ops);
 				client.close();
@@ -108,8 +101,13 @@ module.exports = {
 			assert.equal(null, err);
 			console.log("successfully connected to MongoDB.");
 
-			const db = client.db('weddingDB');
-			const guests = db.collection('guests');
+			if(process.env.NODE_ENV === 'production') {
+				let db = client.db('weddingDB');
+				let guests = db.collection('guests');
+			} else {
+				db = client.db('weddingDB-dev');
+				guests = db.collection('guests');
+			}
 
 			guests.drop((err, response) => {
 				assert.equal(null, err);

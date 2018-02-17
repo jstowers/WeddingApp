@@ -17,35 +17,9 @@ class NavBar extends Component {
 				'4': '',
 				'5': '',
 				'6': ''
-			},
-			fromRSVP: false
-		}
-		
+			}
+		}	
 	}
-
-	/*
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('inside shouldComponentUpdate')
-		console.log(nextProps);
-	}
-	*/
-
-	/*
-	componentWillReceiveProps = () => {
-
-		console.log('this.props =', this.props);
-		console.log('this.state =', this.state);
-
-		if (this.props.location) {
-
-			let receivedMessage = this.props.location.state.fromRSVP;
-			console.log('receivedMessage =', receivedMessage);
-		}
-		
-
-		//this.handleSelect(receivedMessage);
-	} 
-	*/
 	
 	// changes the selected tab from inactive to active
 	handleSelect = (selectedKey) => {
@@ -81,7 +55,7 @@ class NavBar extends Component {
 			     	<NavItem eventKey={2}>Our Story</NavItem>
 		     	</LinkContainer>
 
-		     	<LinkContainer to='RSVPFormNew'
+		     	<LinkContainer to='RSVPForm'
 		     	               className={ this.state.tabs[3] }>
 			     	<NavItem eventKey={3}>RSVP</NavItem>
 		     	</LinkContainer>
@@ -103,10 +77,11 @@ class NavBar extends Component {
 			</Nav>
 		);
 	}
+}
 
+export default NavBar;
 
-	/*
-
+/*
    <LinkContainer to='/' className={ this.state.oneActive }>
 			     	<NavItem eventKey={1}>Home</NavItem>
 		     	</LinkContainer>
@@ -138,7 +113,4 @@ class NavBar extends Component {
 			</Nav>
 		);
 	}
-	*/
-}
-
-export default NavBar;
+*/

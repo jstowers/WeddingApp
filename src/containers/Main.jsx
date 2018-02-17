@@ -3,25 +3,27 @@
 
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import NavBar from '../components/NavBar';
 import Home from '../components/Home';
 import OurStory from '../components/OurStory';
 import RSVPForm from '../components/RSVPForm';
-import RSVPFormNew from '../components/RSVPFormNew';
 import RSVPConfirm from '../components/RSVPConfirm';
+import RSVPPost from '../components/RSVPPost';
 import YourStay from '../components/YourStay';
 import ToDo from '../components/ToDo';
 import Restaurants from '../components/Restaurants';
 
 // Main implements the new React Router v.4
 // Official documentation: https://reacttraining.com/react-router/web/api/
+
 const Main = () => (
-	<Switch>
+
+   	<Switch>
 		<Route exact={true} path ='/' component = { Home } />
 		<Route path ='/Home' component = { Home } />
 		<Route path ='/OurStory' component = { OurStory } />
-		<Route path ='/RSVPFormNew' component = { RSVPFormNew } />
+		<Route path ='/RSVPForm' component = { RSVPForm } />
 		<Route path ='/RSVPConfirm' component = { RSVPConfirm } />
+		<Route path ='/RSVPPost' component = { RSVPPost } />
 		<Route path ='/YourStay' component = { YourStay } />
 		<Route path ='/ToDo' component = { ToDo } />
 		<Route path ='/Restaurants' component = { Restaurants } />
@@ -30,8 +32,73 @@ const Main = () => (
 
 export default Main;
 
-/*
-	<Route path ='/RSVP' component = { RSVPForm } />
-	
+
+/* 
+	Friday, February 16, 2018
+	Switch for Routing (Production vs Development)
+	could not get the process.env.NODE_ENV variable to be defined
+	on the client side.  Need to research further.
+
+class Main extends Component {
+
+	renderSwitch = (param) => {
+
+		switch(param) {
+			case 'production':
+	           	<Switch>
+					<Route exact={true} path ='/' component = { Home } />
+					<Route path ='/Home' component = { Home } />
+					<Route path ='/OurStory' component = { OurStory } />
+					<Route path ='/RSVPForm' component = { RSVPForm } />
+					<Route path ='/RSVPConfirm' component = { RSVPConfirm } />
+					<Route path ='/RSVPPost' component = { RSVPPost } />
+					<Route path ='/YourStay' component = { YourStay } />
+					<Route path ='/ToDo' component = { ToDo } />
+					<Route path ='/Restaurants' component = { Restaurants } />
+				</Switch>
+	            break;
+	        case 'develop':
+	        	<Switch>
+					<Route exact={true} path ='/' component = { Home } />
+					<Route path ='/Home' component = { Home } />
+					<Route path ='/OurStory' component = { OurStory } />
+					<Route path ='/RSVPForm' component = { RSVPForm } />
+					<Route path ='/RSVPConfirm' component = { RSVPConfirm } />
+					<Route path ='/RSVPPost' component = { RSVPPost } />
+					<Route path ='/YourStay' component = { YourStay } />
+					<Route path ='/ToDo' component = { ToDo } />
+					<Route path ='/Restaurants' component = { Restaurants } />
+					<Route path ='/DevControl' component = { DevControl } />
+				</Switch>
+	            break;
+	        default:
+	        	<Switch>
+					<Route exact={true} path ='/' component = { Home } />
+					<Route path ='/Home' component = { Home } />
+					<Route path ='/OurStory' component = { OurStory } />
+					<Route path ='/RSVPForm' component = { RSVPForm } />
+					<Route path ='/RSVPConfirm' component = { RSVPConfirm } />
+					<Route path ='/RSVPPost' component = { RSVPPost } />
+					<Route path ='/YourStay' component = { YourStay } />
+					<Route path ='/ToDo' component = { ToDo } />
+					<Route path ='/Restaurants' component = { Restaurants } />
+				</Switch> 
+		}		
+	}
+
+	render() {
+
+		console.log('NODE_ENV =', process.env.NODE_ENV);
+
+		return (
+			<div>
+				{ this.renderSwitch(process.env.NODE_ENV)}
+			</div>
+		);
+	}
+}
+
+export default Main;
 
 */
+
