@@ -14,7 +14,6 @@ import Restaurants from '../components/Restaurants';
 
 // Main implements the new React Router v.4
 // Official documentation: https://reacttraining.com/react-router/web/api/
-
 const Main = () => (
 
    	<Switch>

@@ -630,7 +630,7 @@ I am now deploying ver. 29.
 _Workaround for Images_
 
 1.  I created an _img_ directory with subfolders.  One subfolder is 'home' and it stores the photos on the Home tab.  Another subfolder is 'hotels' and it stores the photos for the Your Stay tab.
-2.  Within each subfolder, I created an index.js file that is used to generate an export object of images:
+2.  Within each subfolder, I created an _index.js_ file that imports the images from that subfolder and then exports an object of those images:
 
     ```
         import NativoLodge from './NativoLodge.jpg';
@@ -649,7 +649,7 @@ _Workaround for Images_
             HyattTamaya
         };
     ```
-    This format allows for easier import of the image files in my React components.
+    This format allows for easier use of the image files in my React components.
 
 3.  In the _YourStay_ component, I import the hotel images with the following command:
 
@@ -689,8 +689,6 @@ _Workaround for Images_
              alt = { hotelsArray[0].name} />
     ```
 
-
-
 ### Friday, February 9, 2018
 
 _To Do_
@@ -711,11 +709,34 @@ _To Do_
     * Update _YourStay_ with price and notes added for each hotel
     * Update _ToDo_ with additional ABQ attractions
 
-+ _To Do_
++ To Do
     * Add additional ABQ attractions to _ToDo_
     * Build out _Restaurants_
     * Write my story and add pictures
     * Consider methods for faster loading of CSS and image files
     * Add tab to toggle between English/Spanish
 
+### Friday, February 16, 2018
 
++ Accomplishments
+    * Deploy _ver36_
+    * In this deployment, I refactored the RSVPForm process to remove the react-bootstrap modals.
+        - In testing with other browsers and phones, guests would click `Submit` after entering their RSVP information, but no confirmation modal would appear.  The modal feature only worked on MacBook with Chrome browser.
+        - Instead, I developed different pages and used react-router to route the user from one page to the next.
+        - This refactor worked beautifully!
+
++ Work in Progress
+    * I tried to refactor the Main component to allow different `<Switch/>` route statements for development and production.  
+        - I planned to use the _process.env.NODE_ENV variable_ to switch between development and production, but I had difficulty defining the variable on the client side.
+        - I am not sure this variable is defined within the client-side code.  Further research is required.
+
+### Saturday, February 17, 2018
+
++ Work in Progress
+    * Deploy _ver37_
+    * I refactored the _guests_controller_ so that all API requests to MongoDB contain a conditional IF/ELSE statement differentiating between develop and production.
+    * Last night, I noticed that when I deleted the test users in the database, only users in the guests-dev database were deleted.  I reviewed the delete function and the conditional IF/ELSE statement existed.  I then added this statement to the create and get methods.  For some reason, this logic was not working in these methods from earlier versions.
+
++ To Do
+    * Add a .env file to save my MongoDB develop password
+    * Refactor Nav bar buttons so they don't appear scrunched in other browsers
