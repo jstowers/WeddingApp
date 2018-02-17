@@ -5,9 +5,11 @@ import headerStyle from '../../style/02-header.css';
 import NavBar from './NavBar';
 
 const Header = () => (
-	<div className = "headerTitle">
-		<h1>La Boda de Ivy Calderon & Joe Stowers</h1>
-		<h3>Albuquerque, New Mexico</h3>
+	<div>
+		<div className="headerStyle">
+			<h1>La Boda de Ivy Calderon & Joe Stowers</h1>
+			<h3>Albuquerque, New Mexico</h3>
+		</div>
 		<NavBar />
 	</div>
 )

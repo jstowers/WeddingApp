@@ -765,4 +765,5 @@ _To Do_
     * Add a config folder that separates development and production passwords/keys
     * Fully operating dev and prod databases running with RSVPForm working in all environments
 
-+ Completed
++ Updated
+    * Deleted react-router-bootstrap from package.json as unnecessary

@@ -1,6 +1,5 @@
 // RSVPPost
-// Component posts RSVP data to Mongo database
-// and returns a successful response
+// Component posts RSVP data to Mongo database and returns a successful response
 // Friday, February 16, 2018
 
 import React, { Component } from 'react';
@@ -57,9 +56,8 @@ class RSVPPost extends Component {
 					<h3>Bienvenidos a Albuquerque!</h3>
 				    <h3>Nos veremos muy pronto!</h3>
 				</div>
-			)
+			);
 		}
-
 	}
 }
 

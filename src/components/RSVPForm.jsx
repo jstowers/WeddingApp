@@ -26,8 +26,8 @@ class RSVPForm extends Component {
 			songRequest:''
 		};
 
-
 		// defined in webpack.config file
+		// used here only for development to delete guests from database
 		this.hostUrl = __API__;
 
 		if (this.props.history.location.state) {
@@ -43,8 +43,6 @@ class RSVPForm extends Component {
 		} else {
 			this.state = this.baseState;
 		}
-
-
 	}
 
 	handleInputChange = (e) => {
@@ -60,7 +58,6 @@ class RSVPForm extends Component {
 	}
 
 	onFormSubmit = () => {
-
 		let RSVPData = {
 			name: this.state.name,
 			email: this.state.email,
@@ -74,7 +71,6 @@ class RSVPForm extends Component {
 			pathname: '/RSVPConfirm',
 			state: { RSVPData: RSVPData }
 		});
-
 	}
 
 	outputForm = () => {
@@ -135,7 +131,11 @@ class RSVPForm extends Component {
 				<ButtonToolbar>
 			        <Button 
 			        	bsStyle="danger"
-		        		style={{color: 'white', 'textDecoration':'none'}}
+		        		style={{
+		        			color: 'white', 
+		        			'textDecoration':'none',
+		        			'margin-right': '10px'
+		        		}}
 		        		onClick= { this.onFormCancel }>Cancel
         			</Button>
 					<Button 
@@ -149,13 +149,11 @@ class RSVPForm extends Component {
 	}
 
 	render() {
-
 		return (
 			<div>
 				{ this.outputForm() }
 			</div>
-		)
-
+		);
 	}
 }
 

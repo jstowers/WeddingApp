@@ -22,7 +22,7 @@ class RSVPConfirm extends Component {
 		let RSVPData = this.props.location.state.RSVPData;
 
 		this.props.history.replace({
-			pathname: '/RSVPFormNew',
+			pathname: '/RSVPForm',
 			state: { RSVPData: RSVPData }
 		});
 	}
@@ -56,8 +56,8 @@ class RSVPConfirm extends Component {
 				<Table>
 					<tbody>
 						<tr>
-							<td>Number of Adults</td>
-							<td><b>{ RSVP.numAdults }</b></td>
+							<td width='200'>Number of Adults</td>
+							<td width='400'><b>{ RSVP.numAdults }</b></td>
 						</tr>
 						<tr>
 							<td>Number of Children</td>
@@ -83,7 +83,6 @@ class RSVPConfirm extends Component {
 		);
 	}
 
-
 	render() {
 
 		let RSVPData = this.props.location.state.RSVPData;
@@ -98,77 +97,3 @@ class RSVPConfirm extends Component {
 }
 
 export default withRouter(RSVPConfirm);
-
-/*
-	onRSVPConfirm = () => {
-
-		let addGuestPath = 'api/addGuest';
-		let url = this.hostUrl + addGuestPath;
-		console.log('RSVPConfirm url =', url);
-
-		let body = {
-			'name': this.state.name,
-			'email': this.state.email,
-			'numAdults': this.state.numAdults,
-			'numChildren': this.state.numChildren,
-			'songRequest': this.state.songRequest
-		};
-
-		// console.log('onRSVPConfirm body =', body);
-
-		axios.post(url, body)
-		.then(res => {
-			console.log('res =', res);
-			this.setState({ confirmRSVP:true });
-		})
-		.catch(err => {
-			console.log('err =', err);
-		});
-	}
-
-
-	<Modal show={this.state.showModal} onHide={this.toggleModal}>
-	    <Modal.Header>
-	  		<h1>RSVP Confirmation</h1>
-	  		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
-	    </Modal.Header>
-	    <Modal.Body>
-	    	{this.modalBody()}
-		</Modal.Body>
-	    <Modal.Footer>
-	      <Button onClick={ this.toggleModal }>Go Back</Button>
-	      <Button bsStyle="primary"
-	      		  onClick={ this.onRSVPConfirm }>Confirm RSVP
-	      </Button>
-	    </Modal.Footer>
-	</Modal>
-
-
-	closeRSVP = () => {
-
-		return (
-			<Modal show={this.state.showModal} onHide={this.toggleModal}>
-			    <Modal.Header>
-		      		<h1>RSVP Confirmation</h1>
-		      		<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
-			    </Modal.Header>
-			    <Modal.Body>
-			    	<div className="closeRSVP">
-				    	<h2>Success!</h2>
-				    	<h3>We have received your RSVP.</h3>
-			    	</div>
-			    	<div className="bienvenidos">
-			    		<h3>Bienvenidos a Albuquerque!</h3>
-				    	<h3>Nos veremos muy pronto!</h3>
-			    	</div>
-		    	</Modal.Body>
-			    <Modal.Footer>
-			      	<Button>
-			      		<Link to='/Home'
-						>Close</Link>
-		      		</Button>
-			    </Modal.Footer>
-			 </Modal>
-		)
-	}
-*/

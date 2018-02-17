@@ -1,3 +1,17 @@
+body {
+	margin-bottom: 20px;
+}
+
+.form-horizontal {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.form-horizontal .form-group {
+	margin-left: 0px;
+	margin-right: 30px;
+}
+
 
 .closeRSVP h2 {
 	font-family: "Open Sans";
