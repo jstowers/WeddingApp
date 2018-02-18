@@ -754,16 +754,19 @@ _To Do_
     * Last night, I noticed that when I deleted the test users in the database, only users in the guests-dev database were deleted.  I reviewed the delete function and the conditional IF/ELSE statement existed.  I then added this statement to the create and get methods.  For some reason, this logic was not working in these methods from earlier versions.
 
 + To Do
-    * Add a .env file to save my MongoDB develop password
-    * Refactor Nav bar buttons so they don't appear scrunched in other browsers
+   
     * Update restaurants to include Martín in Santa Fe and Mary & Tito's
     * Update hotels to include more economical options between $95-$105
     * Update things to do to include National Hispanic Cultural Center (Bless Me Ultima exhibition) and Indian Pueblo Cultural Center, and Balloon Rides
+    * Refactor the RSVPPost page so that when the data is posted, the user can't go back and submit the data again.
 
-+ Completed
-    * Deploy _ver38_
++ Deploy _ver38_
+    * Deploy _ver38_ and _ver39_
     * Add a config folder that separates development and production passwords/keys
     * Fully operating dev and prod databases running with RSVPForm working in all environments
+
++ Deploy _ver39_
+    *  Refactor Nav bar buttons so they don't appear scrunched in other browsers
 
 + Updated
     * Deleted react-router-bootstrap from package.json as unnecessary

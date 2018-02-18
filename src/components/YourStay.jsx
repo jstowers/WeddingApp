@@ -6,6 +6,7 @@ import { Grid, Col, Row } from 'react-bootstrap';
 import yourstayStyle from '../../style/06-yourstay.css';
 import { 
 	AirBNB,
+	BestWestern,
 	CourtyardMarriott,
 	DruryInn,
 	HamptonInn,
@@ -64,6 +65,7 @@ const hotelsArray = [
 		note1: 'Quick access to I-25 and Paseo del Norte; next to NM\'s only Cabela\'s',
 		note2: '$165+/night'
 	},
+
 	{
 		name: 'Staybridge Suites North',
 		img: '/images/StaybridgeSuites.jpg',
@@ -140,6 +142,17 @@ const hotelsArray = [
 		distance: '6.3 miles',
 		note1: 'Casino, golf, spa, and fine dining',
 		note2: '$249+/night; limited availability Fri (4/27), Sat (4/28), and Sun (4/29)' 
+	},
+	{
+		name: 'Best Western Plus Executive Suites',
+		img: '/images/BestWestern.jpg',
+		url: 'http://bit.ly/2BA9jkM',
+		address1: '4630 Pan American Freeway NE',
+		address2: 'Albuquerque, NM 87109',
+		phone: '505-830-0900',
+		distance: '6.8 miles',
+		note1: 'Quick, convenient access to I-25 and restaurants',
+		note2: '$95+/night'
 	},
 	{
 		name: 'Hyatt Regency Tamaya Resort & Spa',

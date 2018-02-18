@@ -1,4 +1,5 @@
 import AirBNB from './AirBNB.jpg';
+import BestWestern from './BestWestern.jpg';
 import CourtyardMarriott from './CourtyardMarriott.jpg';
 import DruryInn from './DruryInn.jpg';
 import HamptonInn from './HamptonInn.jpg';
@@ -13,6 +14,7 @@ import StaybridgeSuites from './StaybridgeSuites.jpg';
 
 export default { 
 	AirBNB,
+	BestWestern,
 	CourtyardMarriott,
 	DruryInn,
 	HamptonInn,

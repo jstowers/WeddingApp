@@ -42,7 +42,7 @@ class RSVPConfirm extends Component {
 	showConfirmForm = (RSVP) => {
 
 		return (
-			<div>
+			<div classname="rsvpconfirm">
 				<h1>RSVP Confirmation</h1>
 	  			<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
 				<h2>

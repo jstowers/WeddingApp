@@ -9,6 +9,8 @@ import {
 	BioParkAquarium,
 	BioParkGarden,
 	DaVinci,
+	NationalHispanic,
+	NationalNuclear,
 	OldTown,
 	SanFelipe,
 	SandiaTram
@@ -40,30 +42,6 @@ const toDoArray = [
 		cost2: ''
 	},
 	{
-		name: 'ABQ BioPark Botanic Garden',
-		location: 'South of Old Town',
-		img: '/images/BioParkGarden.jpg',
-		url: 'https://www.cabq.gov/culturalservices/biopark/garden',
-		address1: '2601 Central Ave. NW',
-		address2: 'Albuquerque, NM 87104',
-		phone: '505-768-2000',
-		note: 'More than 1.5 mi of paths through beautiful gardens.  A delight to the senses.',
-		cost1: '$14.50 adults, $7.50 seniors, $6 children',
-		cost2: 'combo tickets available for Aquarium'
-	},
-	{
-		name: 'ABQ BioPark Aquarium',
-		location: 'South of Old Town',
-		img: '/images/BioParkAquarium.jpg',
-		url: 'http://www.cabq.gov/culturalservices/biopark/aquarium',
-		address1: '2601 Central Ave. NW',
-		address2: 'Albuquerque, NM 87104',
-		phone: '505-768-2000',
-		note: 'Captivating marine habitats featuring sharks, fish, stingrays, and turtles.',
-		cost1: '$14.50 adults, $7.50 seniors, $6 children',
-		cost2: 'combo tickets available for Botanic Garden'
-	},
-	{
 		name: 'Old Town',
 		location: '',
 		img: '/images/OldTown.jpg',
@@ -87,7 +65,53 @@ const toDoArray = [
 		cost1: '',
 		cost2: '',
 	},
-
+	{
+		name: 'National Hispanic Cultural Center',
+		location: 'Southwest Albuquerque',
+		img:  '/images/NationalHispanic.jpg',
+		url: 'http://www.nhccnm.org/',
+		address1: '1701 4th St. SW',
+		address2: 'Albuquerque, NM 87102',
+		phone: '505-246-2261',
+		note: 'La Ultima Exhibición showcases Rudolfo Anaya\'s celebrated book \'Bless Me, Ultima\'',
+		cost1: '$6 adults'
+	},
+	{
+		name: 'National Museum of Nuclear Science',
+		location: 'Near Kirtland Air Force Base',
+		img: '/images/NationalNuclear.jpg',
+		url: 'http://www.nuclearmuseum.org/visit/',
+		address1: '601 Eubank Blvd. SE',
+		address2: 'Albuquerque, NM 87123',
+		phone: '505-245-2137',
+		note: 'Great exhibit of the atomic age, with fighter jets outside',
+		cost1: '$12 adults, $10 seniors and students',
+		cost2: ''
+	},
+	{
+		name: 'ABQ BioPark Botanic Garden',
+		location: 'South of Old Town',
+		img: '/images/BioParkGarden.jpg',
+		url: 'https://www.cabq.gov/culturalservices/biopark/garden',
+		address1: '2601 Central Ave. NW',
+		address2: 'Albuquerque, NM 87104',
+		phone: '505-768-2000',
+		note: 'More than 1.5 mi of paths through beautiful gardens.  A delight to the senses.',
+		cost1: '$14.50 adults, $7.50 seniors, $6 children',
+		cost2: 'combo tickets available for Aquarium'
+	},
+	{
+		name: 'ABQ BioPark Aquarium',
+		location: 'South of Old Town',
+		img: '/images/BioParkAquarium.jpg',
+		url: 'http://www.cabq.gov/culturalservices/biopark/aquarium',
+		address1: '2601 Central Ave. NW',
+		address2: 'Albuquerque, NM 87104',
+		phone: '505-768-2000',
+		note: 'Captivating marine habitats featuring sharks, fish, stingrays, and turtles.',
+		cost1: '$14.50 adults, $7.50 seniors, $6 children',
+		cost2: 'combo tickets available for Botanic Garden'
+	}
 ];
 
 const toDoItems = toDoArray.map((item, index) => {

@@ -44,14 +44,14 @@ class RSVPPost extends Component {
 
 		if (!this.state.successRSVP) {
 			return (
-				<div>
+				<div classname="rsvpconfirm">
 					<h3>Putting your RSVP on top.</h3>
 					<h3>Give us just a moment!</h3>
 				</div>
 			);
 		} else {
 			return (
-				<div>
+				<div classname="rsvpconfirm">
 					<h3>Success!</h3>
 					<h3>Bienvenidos a Albuquerque!</h3>
 				    <h3>Nos veremos muy pronto!</h3>

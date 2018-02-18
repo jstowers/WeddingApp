@@ -12,7 +12,6 @@ body {
 	margin-right: 30px;
 }
 
-
 .closeRSVP h2 {
 	font-family: "Open Sans";
 	font-size: 20px;
@@ -30,5 +29,9 @@ body {
 	font-family: "Open Sans";
 	font-size: 16px;
 	color: rgb(64,224,208);
+}
+
+.rsvpconfirm {
+	margin-top: 20px;
 }
 

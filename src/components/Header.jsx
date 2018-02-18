@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 
 const Header = () => (
 	<div>
-		<div className="headerStyle">
+		<div className="headerTitle">
 			<h1>La Boda de Ivy Calderon & Joe Stowers</h1>
 			<h3>Albuquerque, New Mexico</h3>
 		</div>
