@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { Grid, Col, Row } from 'react-bootstrap';
 import toEatStyle from '../../style/09-toeat.css';
 import toEatArray from '../../data/restaurantsData';
+import toEatImages from '../../img/toeat/indexToEat';
 
 const ToEat = () => {
 
