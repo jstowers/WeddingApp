@@ -4,15 +4,18 @@ import DaVinci from './DaVinci.jpg';
 import NationalHispanic from './NationalHispanic.jpg';
 import NationalNuclear from './NationalNuclear.jpg';
 import OldTown from './OldTown.jpg';
-import SanFelipe from './SanFelipe.jpg';
 import SandiaTram from './SandiaTram.jpg';
+import SanFelipe from './SanFelipe.jpg';
 
-export default {
+const toDoImages = {
 	BioParkAquarium,
 	BioParkGarden,
 	DaVinci,
 	NationalHispanic,
+	NationalNuclear,
 	OldTown,
 	SandiaTram,
 	SanFelipe,
 };
+
+export default toDoImages;

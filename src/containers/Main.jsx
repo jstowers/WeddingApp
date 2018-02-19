@@ -10,7 +10,7 @@ import RSVPConfirm from '../components/RSVPConfirm';
 import RSVPPost from '../components/RSVPPost';
 import YourStay from '../components/YourStay';
 import ToDo from '../components/ToDo';
-import Restaurants from '../components/Restaurants';
+import ToEat from '../components/ToEat';
 
 // Main implements the new React Router v.4
 // Official documentation: https://reacttraining.com/react-router/web/api/
@@ -25,7 +25,7 @@ const Main = () => (
 		<Route path ='/RSVPPost' component = { RSVPPost } />
 		<Route path ='/YourStay' component = { YourStay } />
 		<Route path ='/ToDo' component = { ToDo } />
-		<Route path ='/Restaurants' component = { Restaurants } />
+		<Route path ='/ToEat' component = { ToEat } />
 	</Switch>
 );
 

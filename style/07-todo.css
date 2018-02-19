@@ -14,6 +14,7 @@ img {
 	width: 100%;
     height: auto;
     margin-top: 10px;
+    border-radius: 4px;
 }
 
 .toDoHeader h3 {
@@ -37,11 +38,16 @@ img {
 	font-family: Merriweather;
 	font-size: 16px;
 	color: black;
-	margin-top: 10px;
+	margin-top: 7px;
+	margin-bottom: 7px;
 }
 
-.weblink h3 {
-	font-family: "Open Sans";
+.toDoDetail h4 {
 	font-size: 16px;
-	color: rgb(64,224,208);
+}
+
+.weblink {
+	font-family: "Open Sans";
+	font-size: 20px;
+	color: rgb(194,24,7);
 }

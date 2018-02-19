@@ -16,7 +16,6 @@ class NavBar extends Component {
 		super(props);
 	}
 
-
 	render() {
 		return (
 			<div className={ navbarStyle }>
@@ -52,7 +51,7 @@ class NavBar extends Component {
 				</Button>
 				<Button>
 					<NavLink
-						to='/Restaurants'
+						to='/ToEat'
 						activeStyle={ activeStyle }
 					>To Eat</NavLink>
 				</Button>

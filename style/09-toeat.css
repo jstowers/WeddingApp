@@ -13,32 +13,38 @@
 img {
 	width: 100%;
     height: auto;
-    margin-top:10px;
+    margin-top: 10px;
     border-radius: 4px;
 }
 
-.hotelDetail h2 {
-	margin-top:10px;
-	margin-bottom:10px;
-	font-family: "Open Sans";
-	font-size: 20px;
+.toEatHeader h3 {
+	margin-top: 40px;
+	padding: 5px;
+	font-family: Open Sans;
+	font-size: 24px;
+	font-style: normal;
 	color: rgb(194,24,7);
 }
 
-.hotelDetail > h3 {
+.toEatDetail h2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.weblink > a {
+	font-family: "Open Sans";
+	font-size: 20px;
+	color: rgb(194, 24, 7);
+}
+
+.toEatDetail h3 {
 	font-family: Merriweather;
 	font-size: 16px;
 	color: black;
-	margin-top: 7px;
-	margin-bottom: 7px;
+	margin-top: 10px;
 }
 
-.hotelDetail h4 {
+.toEatDetail h4 {
 	font-size: 16px;
 }
 
-.weblink h3 {
-	font-family: "Open Sans";
-	font-size: 20px;
-	color: rgb(194,24,7);
-}

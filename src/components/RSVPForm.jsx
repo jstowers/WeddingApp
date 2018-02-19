@@ -134,7 +134,7 @@ class RSVPForm extends Component {
 		        		style={{
 		        			color: 'white', 
 		        			'textDecoration':'none',
-		        			'margin-right': '10px'
+		        			'marginRight': '10px'
 		        		}}
 		        		onClick= { this.onFormCancel }>Cancel
         			</Button>
