@@ -17,6 +17,19 @@ class RSVPConfirm extends Component {
 		super(props);
 	}
 
+	componentWillMount() {
+
+		// if successful RSVP post and user clicks browser's Back button, 
+		// re-route user to Home to avoid duplicate POST requests
+		let popBackFromRSVPPost = this.props.history.action;
+
+		if (popBackFromRSVPPost === 'POP') {
+			this.props.history.push({
+				pathname: '/Home',
+			});
+		}
+	}
+
 	goBack = () => {
 
 		let RSVPData = this.props.location.state.RSVPData;
@@ -42,7 +55,7 @@ class RSVPConfirm extends Component {
 	showConfirmForm = (RSVP) => {
 
 		return (
-			<div classname="rsvpconfirm">
+			<div className="rsvpconfirm">
 				<h1>RSVP Confirmation</h1>
 	  			<h3>Saturday, April 28, 2018 at 4:00 pm</h3>
 				<h2>
@@ -93,7 +106,6 @@ class RSVPConfirm extends Component {
 			</div>
 		);
 	}
-
 }
 
 export default withRouter(RSVPConfirm);
