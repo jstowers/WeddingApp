@@ -4,6 +4,7 @@ import Barelas from './Barelas.jpg';
 import Frontier from './Frontier.jpg';
 import Golden from './Golden.jpg';
 import Grove from './Grove.jpg';
+import IlVicino from './IlVicino.jpg';
 import Martin from './Martin.jpg';
 import Mary from './Mary.jpg';
 import Range from './Range.jpg';
@@ -19,6 +20,7 @@ const toEatImages = {
 	Frontier,
 	Golden,
 	Grove,
+	IlVicino,
 	Martin,
 	Mary,
 	Range,

@@ -30,7 +30,17 @@ const toEatArray = [
 		address2: 'Albuquerque, NM 87106',
 		phone: '505-266-0550',
 		note1: 'An Albuquerque tradition located across from the University of New Mexico, serving great breakfasts, burritos, burgers, roasted green chile, homemade flour tortillas, fresh squeezed orange juice, and the famous Frontier Sweet Roll',
-		note2: 'Una tradicion de Albuquerque, famoso por sus desayunos, tortillas hechas a mano y por su Rol de Canela'
+		note2: 'Una tradición de Albuquerque, famoso por sus desayunos, tortillas hechas a mano y por su Rol de Canela'
+	},
+	{
+		name: 'Il Vicino',
+		img: 'images/IlVicino.jpg',
+		url: 'http://ilvicino.com/',
+		address1: '10701 Corrales Rd.',
+		address2: 'Albuquerque, NM 87114',
+		phone: '505-899-7500',
+		note1: 'Wood oven pizza, great Italian sandwiches, salads, beer, wine, and coffee',
+		note2: 'Un bistro italiano perfecto para pizza de horno, una ensalada, y cerveza, vino, y café'
 	},
 	{
 		name: 'Standard Diner',
@@ -39,7 +49,7 @@ const toEatArray = [
 		address1: '320 Central Ave SE',
 		address2: 'Albuquerque, NM 87102',
 		phone: '505-243-1440',
-		note1: 'Modern Twist on diner classics',
+		note1: 'Modern twist on diner classics',
 		note2: 'Toque moderno de comida americana'
 	},
 	{
@@ -49,7 +59,7 @@ const toEatArray = [
 		address1: '600 Central Avenue SE Suite A',
 		address2: 'Albuquerque, New Mexico 87102',
 		phone: '505-248-9800',
-		note1: 'Relaxed American eatery offering organic brekfast & lunch',
+		note1: 'Relaxed American eatery offering organic breakfast & lunch',
 		note2: 'Lugar de comida organica ideal para desayuno o almuerzo'
 	},
 	{
@@ -63,7 +73,7 @@ const toEatArray = [
 		note2: 'Comida de Nuevo Mexico con toque de chile verde'
 	},
 	{
-		name: 'Tia Bs La Waffleria',
+		name: 'Tia B\'s La Waffleria',
 		img: 'images/Waffles.jpg',
 		url: 'http://www.lawaffleriaabq.com',
 		address1: '3710 Campus Blvd NE',
@@ -73,7 +83,7 @@ const toEatArray = [
 		note2: 'Su especialidad son platillos a base de waffles'
 	},
 	{
-		name: 'Barelas',
+		name: 'Barelas Coffee House',
 		img: 'images/Barelas.jpg',
 		url: 'https://www.yelp.com/biz/barelas-coffee-house-albuquerque',
 		address1: '1502 4th St SW',
@@ -93,7 +103,7 @@ const toEatArray = [
 		note2: 'Un clasico para desayunar burritos'
 	},
 	{
-		name: 'Mary & Titos',
+		name: 'Mary & Tito\'s',
 		img: 'images/Mary.jpg',
 		url: 'https://www.yelp.com/biz/mary-and-titos-albuquerque',
 		address1: '2711 4th St NW',
