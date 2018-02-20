@@ -15,6 +15,9 @@ img {
     height: auto;
     margin-top: 10px;
     border-radius: 4px;
+    border-color: rgb(64,224,208);
+    border-width: 3px;
+    border-style: solid;
 }
 
 .toDoHeader h3 {
