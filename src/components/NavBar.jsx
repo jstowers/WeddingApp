@@ -23,43 +23,43 @@ class NavBar extends Component {
 					<NavLink
 						to='/Home'
 						activeStyle={ activeStyle }
-					>Home</NavLink>
+					>Home Inicio</NavLink>
 				</Button>
 				<Button>
 					<NavLink
 						to='/OurStory'
 						activeStyle={ activeStyle }
-					>Our Story</NavLink>
+					>Our Story Historia</NavLink>
 				</Button>
 				<Button>
 					<NavLink
 						to='/RSVPForm'
 						activeStyle={ activeStyle }
-					>RSVP</NavLink>
+					>RSVP Confirmar</NavLink>
 				</Button>
 				<Button>
 					<NavLink
 						to='/YourStay'
 						activeStyle={ activeStyle }
-					>Your Stay</NavLink>
+					>Your Stay Hoteles</NavLink>
 				</Button>
 				<Button>
 					<NavLink
 						to='/ToDo'
 						activeStyle={ activeStyle }
-					>To Do</NavLink>
+					>To Do Diversión</NavLink>
 				</Button>
 				<Button>
 					<NavLink
 						to='/ToEat'
 						activeStyle={ activeStyle }
-					>To Eat</NavLink>
+					>To Eat Comida</NavLink>
 				</Button>
 				<Button>
 					<NavLink
 						to='/Registry'
 						activeStyle={ activeStyle }
-					>Registry</NavLink>
+					>Registry Regalos</NavLink>
 				</Button>
 			</div>
 		);
