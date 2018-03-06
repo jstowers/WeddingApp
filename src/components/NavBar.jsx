@@ -55,6 +55,12 @@ class NavBar extends Component {
 						activeStyle={ activeStyle }
 					>To Eat</NavLink>
 				</Button>
+				<Button>
+					<NavLink
+						to='/Registry'
+						activeStyle={ activeStyle }
+					>Registry</NavLink>
+				</Button>
 			</div>
 		);
 	}

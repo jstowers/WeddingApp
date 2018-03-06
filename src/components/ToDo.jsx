@@ -47,7 +47,7 @@ const ToDo = () => {
 		<div className={ toDoStyle }>
 			<div className = "toDoHeader">
 				<h3>Albuquerque offers an abundance of fun experiences!<br/><br/>
-					Hay una abundancia de diversiones y entretenimiento en Albuquerque!
+					¡Hay una abundancia de diversiones y entretenimiento en Albuquerque!
 				</h3>
 			</div>
 			<Grid className = "gridContainer">
