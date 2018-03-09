@@ -3,15 +3,21 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let apiHost;
+let apiHost, process_NODE_ENV;
 
 let setupAPI = function() {
+
+    console.log('=> INSIDE setupAPI() of webpack.config.js');
+    console.log('process.env.NODE_ENV =', process.env.NODE_ENV);
+
     switch(process.env.NODE_ENV) {
         case 'production':
+            process_NODE_ENV = "'production'";
             apiHost = "'http://www.ivyjoe2018.com/'";
             break;
         case 'develop':
         default:
+            process_NODE_ENV = "'develop'";
             apiHost = "'http://localhost:3000/'";
             break;
     }
@@ -95,6 +101,9 @@ const config = {
         }),
         new webpack.DefinePlugin({
             __API__: apiHost
+        }),
+        new webpack.DefinePlugin({
+            __process_NODE_ENV__: process_NODE_ENV
         }),
         new webpack.ProvidePlugin({
             Promise: 'es6-promise-promise'

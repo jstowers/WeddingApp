@@ -12,6 +12,7 @@ import YourStay from '../components/YourStay';
 import ToDo from '../components/ToDo';
 import ToEat from '../components/ToEat';
 import Registry from '../components/Registry';
+import Admin from '../components/Admin';
 
 // Main implements the new React Router v.4
 // Official documentation: https://reacttraining.com/react-router/web/api/
@@ -28,6 +29,7 @@ const Main = () => (
 		<Route path ='/ToDo' component = { ToDo } />
 		<Route path ='/ToEat' component = { ToEat } />
 		<Route path ='/Registry' component = { Registry } />
+		<Route path ='/Admin' component = { Admin } />
 	</Switch>
 );
 

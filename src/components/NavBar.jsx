@@ -61,6 +61,12 @@ class NavBar extends Component {
 						activeStyle={ activeStyle }
 					>Registry Regalos</NavLink>
 				</Button>
+				<Button>
+					<NavLink
+						to='/Admin'
+						activeStyle={ activeStyle }
+					>Admin</NavLink>
+				</Button>
 			</div>
 		);
 	}
